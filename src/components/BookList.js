@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import BookCard from "./BookCard";
+import {BookCardsContainerStyle} from "./BookCardContainerStyle";
 
 const BookList = () => {
   const [books, setBooks] = useState([]);
@@ -36,7 +37,7 @@ const BookList = () => {
   }, []);
 
   return (
-      <div className="book list">
+      <BookCardsContainerStyle>
         {books.map((book, index) => (
             <BookCard
                 key={index}
@@ -46,7 +47,7 @@ const BookList = () => {
                 published={book.volumeInfo.publishedDate}
             />
         ))}
-      </div>
+      </BookCardsContainerStyle>
   );
 };
 
