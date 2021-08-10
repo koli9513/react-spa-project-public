@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import BookCard from "./BookCard";
 
 const BookList = () => {
   const [books, setBooks] = useState([]);
@@ -20,14 +21,14 @@ const BookList = () => {
   return (
     <div>
       {books.map((book, index) => (
-        <>
+        <BookCard>
           <div key={index}>{book.volumeInfo.title}</div>
           <img
             src={book.volumeInfo.imageLinks.smallThumbnail}
             alt="cover"
             key={index + 1}
           />
-        </>
+        </BookCard>
       ))}
     </div>
   );
