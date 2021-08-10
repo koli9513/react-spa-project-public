@@ -1,6 +1,11 @@
+import React, { useState, useContext } from "react";
 import { BookCardStyle } from "./BookCardStyle";
+import { FavoriteContext } from "./FavoriteContext";
 
 const BookCard = (props) => {
+  const { favoriteBooks, setFavoriteBooks } = useContext(FavoriteContext);
+  const [isFavorite, setIsFavorite] = useState(false);
+
   return (
     <BookCardStyle>
       <img src={props.cover} alt="cover" />
@@ -9,7 +14,11 @@ const BookCard = (props) => {
         <h6>{props.author}</h6>
         <p>{props.published}</p>
       </div>
-      <button>Add to favorites</button>
+      {isFavorite ? (
+        <button>Remove from favorites</button>
+      ) : (
+        <button>Add to favorites</button>
+      )}
     </BookCardStyle>
   );
 };
