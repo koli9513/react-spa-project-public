@@ -23,10 +23,10 @@ const BookCard = (props) => {
   };
 
   const removeFromFavoriteBooks = () => {
+    if (!props.fromFavoriteList) setIsFavorite(false);
     const updatedFavoriteBooks = favoriteBooks.filter(
       (book) => book.id !== props.id
     );
-    setIsFavorite(false);
     setFavoriteBooks(updatedFavoriteBooks);
   };
 
