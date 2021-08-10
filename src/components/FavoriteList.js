@@ -16,6 +16,7 @@ const FavoriteList = () => {
           title={book.title}
           published={book.published}
           id={book.id}
+          fromFavoriteList={true}
         />
       ))}
     </BookCardsContainerStyle>
