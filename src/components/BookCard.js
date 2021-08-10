@@ -20,6 +20,14 @@ const BookCard = (props) => {
     ]);
   };
 
+  const removeFromFavoriteBooks = () => {
+    const updatedFavoriteBooks = favoriteBooks.filter(
+      (book) => book.id !== props.id
+    );
+    setIsFavorite(false);
+    setFavoriteBooks(updatedFavoriteBooks);
+  };
+
   return (
     <BookCardStyle>
       <img src={props.cover} alt="cover" />
@@ -29,7 +37,7 @@ const BookCard = (props) => {
         <p>{props.published}</p>
       </div>
       {isFavorite ? (
-        <button onClick={addToFavoriteBooks}>Remove from favorites</button>
+        <button onClick={removeFromFavoriteBooks}>Remove from favorites</button>
       ) : (
         <button onClick={addToFavoriteBooks}>Add to favorites</button>
       )}
