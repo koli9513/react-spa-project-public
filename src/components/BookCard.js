@@ -4,7 +4,9 @@ import { FavoriteContext } from "./FavoriteContext";
 
 const BookCard = (props) => {
   const { favoriteBooks, setFavoriteBooks } = useContext(FavoriteContext);
-  const [isFavorite, setIsFavorite] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(
+    favoriteBooks.some((book) => book.id === props.id)
+  );
 
   const addToFavoriteBooks = () => {
     setIsFavorite(true);
