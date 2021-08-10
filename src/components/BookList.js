@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import BookCard from "./BookCard";
-import {BookCardsContainerStyle} from "./BookCardContainerStyle";
+import { BookCardsContainerStyle } from "./BookCardContainerStyle";
 
 const BookList = () => {
   const [books, setBooks] = useState([]);
@@ -15,18 +15,19 @@ const BookList = () => {
   };
 
   function getRandomLetter() {
-    const alphabet = "abcdefghijklmnopqrstuvwxyz"
-    return alphabet[Math.floor(Math.random() * alphabet.length)]
+    const alphabet = "abcdefghijklmnopqrstuvwxyz";
+    return alphabet[Math.floor(Math.random() * alphabet.length)];
   }
 
-  function correctMissingProperties (books) {
+  function correctMissingProperties(books) {
     return books.map((book) => {
-      if (book.volumeInfo.hasOwnProperty('publishedDate') === false) {
-        book.volumeInfo['publishedDate'] = '0000';
-      } else if (book.volumeInfo.hasOwnProperty('imageLinks') === false) {
-        book.volumeInfo['imageLinks'] = {
-          cover: 'https://st4.depositphotos.com/14953852/22772/v/600/depositphotos_227725020-stock-illustration-image-available-icon-flat-vector.jpg'
-        }
+      if (book.volumeInfo.hasOwnProperty("publishedDate") === false) {
+        book.volumeInfo["publishedDate"] = "0000";
+      } else if (book.volumeInfo.hasOwnProperty("imageLinks") === false) {
+        book.volumeInfo["imageLinks"] = {
+          cover:
+            "https://st4.depositphotos.com/14953852/22772/v/600/depositphotos_227725020-stock-illustration-image-available-icon-flat-vector.jpg",
+        };
       }
       return book;
     });
@@ -37,17 +38,17 @@ const BookList = () => {
   }, []);
 
   return (
-      <BookCardsContainerStyle>
-        {books.map((book, index) => (
-            <BookCard
-                key={index}
-                cover={book.volumeInfo.imageLinks.smallThumbnail}
-                author={book.volumeInfo.authors}
-                title={book.volumeInfo.title}
-                published={book.volumeInfo.publishedDate}
-            />
-        ))}
-      </BookCardsContainerStyle>
+    <BookCardsContainerStyle>
+      {books.map((book, index) => (
+        <BookCard
+          key={index}
+          cover={book.volumeInfo.imageLinks.smallThumbnail}
+          author={book.volumeInfo.authors}
+          title={book.volumeInfo.title}
+          published={book.volumeInfo.publishedDate}
+        />
+      ))}
+    </BookCardsContainerStyle>
   );
 };
 
