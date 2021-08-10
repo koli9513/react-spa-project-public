@@ -46,6 +46,7 @@ const BookList = () => {
           author={book.volumeInfo.authors}
           title={book.volumeInfo.title}
           published={book.volumeInfo.publishedDate}
+          id={book.id}
         />
       ))}
     </BookCardsContainerStyle>

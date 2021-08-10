@@ -6,6 +6,20 @@ const BookCard = (props) => {
   const { favoriteBooks, setFavoriteBooks } = useContext(FavoriteContext);
   const [isFavorite, setIsFavorite] = useState(false);
 
+  const addToFavoriteBooks = () => {
+    setIsFavorite(true);
+    setFavoriteBooks([
+      ...favoriteBooks,
+      {
+        cover: props.cover,
+        title: props.title,
+        author: props.author,
+        date: props.published,
+        id: props.id,
+      },
+    ]);
+  };
+
   return (
     <BookCardStyle>
       <img src={props.cover} alt="cover" />
@@ -15,9 +29,9 @@ const BookCard = (props) => {
         <p>{props.published}</p>
       </div>
       {isFavorite ? (
-        <button>Remove from favorites</button>
+        <button onClick={addToFavoriteBooks}>Remove from favorites</button>
       ) : (
-        <button>Add to favorites</button>
+        <button onClick={addToFavoriteBooks}>Add to favorites</button>
       )}
     </BookCardStyle>
   );
