@@ -4,9 +4,9 @@ import { FavoriteContext } from "../contexts/FavoriteContext";
 import AppTheme from "../theme/AppTheme";
 import ThemeContext from "../contexts/ThemeContext";
 import {StyledCoverImage} from "../styles/StyledCoverImage";
-import {StyledDetailedLink} from "../styles/StyledDetailedLink";
 import FlipHelper from "../helpers/FlipHelper";
-import {StyledFavouriteButton} from "../styles/StyledFavouriteButton";
+import {BookInfo} from "../elements/BookInfo";
+import {ActionItems} from "../elements/ActionItems";
 
 const BookCard = (props) => {
   const { favoriteBooks, setFavoriteBooks } = useContext(FavoriteContext);
@@ -39,23 +39,6 @@ const BookCard = (props) => {
     setFavoriteBooks(updatedFavoriteBooks);
   };
 
-  const BookInfo =
-      <div>
-        <h4>{props.title}</h4>
-        <h5>{props.authors}</h5>
-        <p>{props.published}</p>
-      </div>
-
-  const ActionPage =
-      <div style={{width: "190px", height: "120px"}}>
-        {isFavorite ? (
-            <StyledFavouriteButton onClick={removeFromFavoriteBooks}>Add favourite</StyledFavouriteButton>
-        ) : (
-            <StyledFavouriteButton onClick={addToFavoriteBooks}>Remove favourite</StyledFavouriteButton>
-        )}
-        <br/>
-        <StyledDetailedLink to={detailedViewUrl}>More information</StyledDetailedLink>
-      </div>
 
   return (
     <StyledBookCard style={{
@@ -63,8 +46,11 @@ const BookCard = (props) => {
       border: `${currentTheme.cardBorderColor}`,
     }}>
       <StyledCoverImage src={props.cover} alt="cover" />
-      <FlipHelper cardBack={ActionPage}
-            cardFront={BookInfo}/>
+      <FlipHelper cardBack={<ActionItems  removeFromFavoriteBooks={removeFromFavoriteBooks}
+                                          addToFavoriteBooks={addToFavoriteBooks}
+                                          detailedViewUrl={detailedViewUrl}
+                                          isFavorite={isFavorite}/>}
+                  cardFront={<BookInfo props={props}/>}/>
     </StyledBookCard>
   );
 };
