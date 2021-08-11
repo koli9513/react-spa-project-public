@@ -18,7 +18,12 @@ const SearchBox = () => {
                 window.location.replace(`/search/${search}`)
             }} >
                 <input onChange={getSearchBox} type="text"/>
+                <select name="searchType" id="searchType">
+                    <option value="title">Title</option>
+                    <option value="Author">Author</option>
+                </select>
                 <button type="submit">Search</button>
+
             </form>
         </div>
     )
