@@ -55,6 +55,7 @@ const BookList = () => {
           title={book.title}
           published={book.publishedDate}
           id={book.id}
+          fromFavoriteList={false}
         />
       ))}
     </BookCardsContainerStyle>
