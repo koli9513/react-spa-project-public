@@ -1,29 +1,33 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import {useState, useEffect, useContext} from "react";
 import BookCard from "./BookCard";
 import { BookCardsContainerStyle } from "./BookCardContainerStyle";
+import AppTheme from "./AppTheme";
+import ThemeContext from "./ThemeContext";
+import {KeywordProvider} from "./KeywordProvider";
+
 
 const BookList = () => {
+  const theme = useContext(ThemeContext)[0];
+  const currentTheme = AppTheme[theme];
+  const missingImgUrl = "https://st4.depositphotos.com/14953852/22772/v/600/depositphotos_227725020-stock-illustration-image-available-icon-flat-vector.jpg";
+
   const [books, setBooks] = useState([]);
-  const url = `https://www.googleapis.com/books/v1/volumes?q="${getRandomLetter()}&maxResults=30`;
+  const url = `https://www.googleapis.com/books/v1/volumes?q=${KeywordProvider}&maxResults=30`;
   const getBooks = () => {
     axios.get(url).then((response) => {
+      console.log(url)
       const booksFromServer = response.data.items;
       const cleaned = correctMissingProperties(booksFromServer);
       setBooks(cleaned);
     });
   };
 
-  function getRandomLetter() {
-    const alphabet = "abcdefghijklmnopqrstuvwxyz";
-    return alphabet[Math.floor(Math.random() * alphabet.length)];
-  }
-
   function correctMissingProperties(books) {
     return books.map((book) => {
       book = {
         cover: book.volumeInfo.hasOwnProperty("imageLinks") ? book.volumeInfo.imageLinks.thumbnail :
-            "https://st4.depositphotos.com/14953852/22772/v/600/depositphotos_227725020-stock-illustration-image-available-icon-flat-vector.jpg",
+            missingImgUrl,
         title: book.volumeInfo.title ? book.volumeInfo.title : "Not available",
         author: book.volumeInfo.authors ? book.volumeInfo.authors : "Not available",
         publishedDate: book.volumeInfo.publishedDate ? book.volumeInfo.publishedDate : "Not available",
@@ -37,7 +41,12 @@ const BookList = () => {
   }, []);
 
   return (
-    <BookCardsContainerStyle>
+      <BookCardsContainerStyle
+          style={{
+            backgroundColor: `${currentTheme.backgroundColor}`,
+            color: `${currentTheme.color}`,
+            border: `${currentTheme.borderColor}`,
+          }}>
       {books.map((book, index) => (
         <BookCard
           key={index}
