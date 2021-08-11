@@ -9,7 +9,7 @@ const AppTheme = {
   dark: {
     color: "#23ffa2",
     backgroundColor: "#093f29",
-    borderColor: '4px solid #372964',
+    borderColor: '2px solid #23ffa2',
     cardBorderColor: '3px solid #23ffa2',
     cardBackgroundColor: "#0d7249",
   },
