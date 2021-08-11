@@ -4,9 +4,12 @@ import { FavoriteContext } from "../contexts/FavoriteContext";
 import AppTheme from "../theme/AppTheme";
 import ThemeContext from "../contexts/ThemeContext";
 import {StyledCoverImage} from "../styles/StyledCoverImage";
-import {StyledDetailedLink} from "../styles/StyledDetailedLink";
 import FlipHelper from "../helpers/FlipHelper";
+import {BookInfo} from "../elements/BookInfo";
+import {ActionItems} from "../elements/ActionItems";
 import {StyledFavouriteButton} from "../styles/StyledFavouriteButton";
+import {StyledDetailedLink} from "../styles/StyledDetailedLink";
+import ButtonTheme from "../theme/ButtonTheme";
 
 const BookCard = (props) => {
   const { favoriteBooks, setFavoriteBooks } = useContext(FavoriteContext);
@@ -16,6 +19,7 @@ const BookCard = (props) => {
   const detailedViewUrl = `/book/${props.id}`;
   const theme = useContext(ThemeContext)[0];
   const currentTheme = AppTheme[theme];
+  const buttonTheme = ButtonTheme[theme];
 
   const addToFavoriteBooks = () => {
     setIsFavorite(true);
@@ -39,23 +43,6 @@ const BookCard = (props) => {
     setFavoriteBooks(updatedFavoriteBooks);
   };
 
-  const BookInfo =
-      <div>
-        <h4>{props.title}</h4>
-        <h5>{props.authors}</h5>
-        <p>{props.published}</p>
-      </div>
-
-  const ActionPage =
-      <div style={{width: "190px", height: "120px"}}>
-        {isFavorite ? (
-            <StyledFavouriteButton onClick={removeFromFavoriteBooks}>Add favourite</StyledFavouriteButton>
-        ) : (
-            <StyledFavouriteButton onClick={addToFavoriteBooks}>Remove favourite</StyledFavouriteButton>
-        )}
-        <br/>
-        <StyledDetailedLink to={detailedViewUrl}>More information</StyledDetailedLink>
-      </div>
 
   return (
     <StyledBookCard style={{
@@ -63,8 +50,22 @@ const BookCard = (props) => {
       border: `${currentTheme.cardBorderColor}`,
     }}>
       <StyledCoverImage src={props.cover} alt="cover" />
-      <FlipHelper cardBack={ActionPage}
-            cardFront={BookInfo}/>
+      <FlipHelper cardBack={
+        <div style={{width: "190px", height: "120px"}}>
+          {isFavorite ? (
+              <StyledFavouriteButton onClick={removeFromFavoriteBooks}>Remove favourite</StyledFavouriteButton>
+          ) : (
+              <StyledFavouriteButton onClick={addToFavoriteBooks}>Add favourite</StyledFavouriteButton>
+          )}
+          <br/>
+          <StyledDetailedLink style={{
+            backgroundColor: `${buttonTheme.backgroundColor}`,
+            color: `${buttonTheme.color}`,
+            borderColor: `${buttonTheme.borderColor}`
+          }} to={detailedViewUrl}>More information</StyledDetailedLink>
+        </div>
+      }
+                  cardFront={<BookInfo props={props}/>}/>
     </StyledBookCard>
   );
 };

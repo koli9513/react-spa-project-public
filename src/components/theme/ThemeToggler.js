@@ -6,6 +6,8 @@ const ThemeTogglerStyle = styled.button
     .attrs({className: 'switch'})`
   //margin-left: 1450px;
   background-color: inherit;
+  width: 40px;
+  height: 30px;
 `;
 
 const ThemeToggler = () => {

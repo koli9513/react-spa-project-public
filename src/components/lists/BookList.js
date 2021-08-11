@@ -1,7 +1,7 @@
 import axios from "axios";
 import {useState, useEffect, useContext} from "react";
 import BookCard from "../bookcard/BookCard";
-import { BookCardsContainerStyle } from "./BookCardContainerStyle";
+import { BookCardsContainerStyle } from "../styles/BookCardContainerStyle";
 import AppTheme from "../theme/AppTheme";
 import ThemeContext from "../contexts/ThemeContext";
 import {KeywordProvider} from "../helpers/KeywordProvider";
@@ -13,21 +13,13 @@ const BookList = () => {
   const currentTheme = AppTheme[theme];
 
   const [books, setBooks] = useState([]);
-  const url = `https://www.googleapis.com/books/v1/volumes?q=${KeywordProvider}&maxResults=30`;
   const getBooks = () => {
-    axios.get(url).then((response) => {
-      console.log(url)
+    axios.get(Globals.homePageApiUrl).then((response) => {
       const booksFromServer = response.data.items;
       const cleaned = correctMissingProperties(booksFromServer);
       setBooks(cleaned);
     });
   };
-
-
-
-
-
-
 
   function correctMissingProperties(books) {
     return books.map((book) => {

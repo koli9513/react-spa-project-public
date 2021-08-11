@@ -1,10 +1,14 @@
 import axios from "axios";
 import {useState, useEffect, useContext} from "react";
 import BookCard from "../bookcard/BookCard";
-import { BookCardsContainerStyle } from "./BookCardContainerStyle";
+import { BookCardsContainerStyle } from "../styles/BookCardContainerStyle";
 import AppTheme from "../theme/AppTheme";
 import ThemeContext from "../contexts/ThemeContext";
 import {useParams} from "react-router-dom";
+import day from "../theme/daycat.gif";
+import day2 from "../theme/daycat2.gif";
+import night from "../theme/nightcat.gif";
+import night2 from "../theme/nightcat2.gif";
 
 
 const SearchList = () => {
@@ -12,10 +16,21 @@ const SearchList = () => {
     const currentTheme = AppTheme[theme];
     const missingImgUrl = "https://st4.depositphotos.com/14953852/22772/v/600/depositphotos_227725020-stock-illustration-image-available-icon-flat-vector.jpg";
     const { searchType, searchTerm } = useParams();
-    const searchBy = searchType === 'author' ? '+inauthor:' : '+intitle:'
+    const searchIn = (() => {
+        if (searchType === "author")
+            return '+inauthor:'
+        else if (searchType === "title")
+            return '+intitle:'
+        else if (searchType === "publisher")
+            return '+inpublisher:'
+        else if (searchType === "subject")
+            return '+subject:'
+        else if (searchType === "isbn")
+            return '+isbn:'
+    })();
 
     const [books, setBooks] = useState([]);
-    const url = `https://www.googleapis.com/books/v1/volumes?q=${searchBy}${searchTerm}&maxResults=30`;
+    const url = `https://www.googleapis.com/books/v1/volumes?q=${searchIn}${searchTerm}&maxResults=30`;
     const getBooks = () => {
         axios.get(url).then((response) => {
             console.log(url)
