@@ -11,30 +11,35 @@ const BookDetailedView = () => {
             const url = `https://www.googleapis.com/books/v1/volumes/${bookId}`;
             axios.get(url).then((response) => {
                 const bookFromServer = response.data;
-                const book = {
-                    cover: bookFromServer.volumeInfo.imageLinks.smallThumbnail,
-                    title: bookFromServer.volumeInfo.title ? bookFromServer.volumeInfo.title : "Not available",
-                    author: bookFromServer.volumeInfo.authors ? bookFromServer.volumeInfo.authors : "Not available",
-                    subtitle: bookFromServer.volumeInfo.subtitle ? bookFromServer.volumeInfo.subtitle : "Not available",
-                    publisher: bookFromServer.volumeInfo.publisher ? bookFromServer.volumeInfo.publisher : "Not available",
-                    publishedDate: bookFromServer.volumeInfo.publishedDate ? bookFromServer.volumeInfo.publishedDate : "Not available",
-                    description: bookFromServer.volumeInfo.description ? bookFromServer.volumeInfo.description : "Description not available",
-                    pageCount: bookFromServer.volumeInfo.pageCount ? bookFromServer.volumeInfo.pageCount : "Not available",
-                    categories: bookFromServer.volumeInfo.categories ? bookFromServer.volumeInfo.categories : "Not available",
-                    maturityRating: bookFromServer.volumeInfo.maturityRating ? bookFromServer.volumeInfo.maturityRating : "Not available",
-                    previewLink: bookFromServer.volumeInfo.previewLink ? <a href={bookFromServer.volumeInfo.previewLink}>Preview</a> : null,
-                    language: bookFromServer.volumeInfo.language ? bookFromServer.volumeInfo.language : "Not available",
-                    amount: bookFromServer.saleInfo.listPrice ? bookFromServer.saleInfo.listPrice.amount : "Unavailable",
-                    currencyCode: bookFromServer.saleInfo.listPrice ? bookFromServer.saleInfo.listPrice.currencyCode : null,
-                    buyLink: bookFromServer.saleInfo.buyLink ? <a href={bookFromServer.saleInfo.buyLink}>Buy</a> : null,
-                    webReaderLink: bookFromServer.accessInfo.webReaderLink ?
-                        <a href={bookFromServer.accessInfo.webReaderLink}>Read sample</a> : null,
-                };
-                setBookDetails(book);
+                const cleaned = correctMissingProperties(bookFromServer)
+                setBookDetails(cleaned);
             });
         };
         getBookDetail();
     }, [bookId]);
+
+    function correctMissingProperties(book) {
+        return {
+                cover: book.volumeInfo.hasOwnProperty("imageLinks") === true ? book.volumeInfo.imageLinks.thumbnail :
+                    "https://st4.depositphotos.com/14953852/22772/v/600/depositphotos_227725020-stock-illustration-image-available-icon-flat-vector.jpg",
+                title: book.volumeInfo.title ? book.volumeInfo.title : "Not available",
+                author: book.volumeInfo.authors ? book.volumeInfo.authors : "Not available",
+                publishedDate: book.volumeInfo.publishedDate ? book.volumeInfo.publishedDate : "Not available",
+                subtitle: book.volumeInfo.subtitle ? book.volumeInfo.subtitle : "Not available",
+                publisher: book.volumeInfo.publisher ? book.volumeInfo.publisher : "Not available",
+                description: book.volumeInfo.description ? book.volumeInfo.description : "Description not available",
+                pageCount: book.volumeInfo.pageCount ? book.volumeInfo.pageCount : "Not available",
+                categories: book.volumeInfo.categories ? book.volumeInfo.categories : "Not available",
+                maturityRating: book.volumeInfo.maturityRating ? book.volumeInfo.maturityRating : "Not available",
+                previewLink: book.volumeInfo.previewLink ? <a href={book.volumeInfo.previewLink}>Preview</a> : null,
+                language: book.volumeInfo.language ? book.volumeInfo.language : "Not available",
+                amount: book.saleInfo.listPrice ? book.saleInfo.listPrice.amount : "Unavailable",
+                currencyCode: book.saleInfo.listPrice ? book.saleInfo.listPrice.currencyCode : null,
+                buyLink: book.saleInfo.buyLink ? <a href={book.saleInfo.buyLink}>Buy</a> : null,
+                webReaderLink: book.accessInfo.webReaderLink ?
+                    <a href={book.accessInfo.webReaderLink}>Read sample</a> : null,
+            };
+    }
 
     return (
         <div>

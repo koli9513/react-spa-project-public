@@ -21,13 +21,12 @@ const BookList = () => {
 
   function correctMissingProperties(books) {
     return books.map((book) => {
-      if (book.volumeInfo.hasOwnProperty("publishedDate") === false) {
-        book.volumeInfo["publishedDate"] = "0000";
-      } else if (book.volumeInfo.hasOwnProperty("imageLinks") === false) {
-        book.volumeInfo["imageLinks"] = {
-          cover:
+      book = {
+        cover: book.volumeInfo.hasOwnProperty("imageLinks") ? book.volumeInfo.imageLinks.thumbnail :
             "https://st4.depositphotos.com/14953852/22772/v/600/depositphotos_227725020-stock-illustration-image-available-icon-flat-vector.jpg",
-        };
+        title: book.volumeInfo.title ? book.volumeInfo.title : "Not available",
+        author: book.volumeInfo.authors ? book.volumeInfo.authors : "Not available",
+        publishedDate: book.volumeInfo.publishedDate ? book.volumeInfo.publishedDate : "Not available",
       }
       return book;
     });
@@ -42,10 +41,10 @@ const BookList = () => {
       {books.map((book, index) => (
         <BookCard
           key={index}
-          cover={book.volumeInfo.imageLinks.smallThumbnail}
-          author={book.volumeInfo.authors}
-          title={book.volumeInfo.title}
-          published={book.volumeInfo.publishedDate}
+          cover={book.cover}
+          author={book.authors}
+          title={book.title}
+          published={book.publishedDate}
           id={book.id}
         />
       ))}
