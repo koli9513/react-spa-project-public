@@ -7,6 +7,7 @@ import "./App.css";
 import FavoriteList from "./components/FavoriteList";
 import ThemeContext from "./components/ThemeContext";
 import BookDetailedView from "./components/BookDetailedView";
+import SearchList from "./components/SearchList";
 
 
 function App() {
@@ -24,7 +25,7 @@ function App() {
                   <BookList />
                 </Route>
                 <Route path="/search/:searchTerm">
-
+                  <SearchList/>
                 </Route>
                 <Route path="/genres">Genres</Route>
                 <Route path="/favorites"><FavoriteList /></Route>
