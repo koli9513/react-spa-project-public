@@ -18,9 +18,7 @@ function App() {
             <div className="App">
               <Navbar />
               <Switch>
-                <Route exact path="/">
-                  <BookList />
-                </Route>
+                <Route exact path="/"><BookList /></Route>
                 <Route path="/genres">Genres</Route>
                 <Route path="/favorites"><FavoriteList /></Route>
                 <Route path="/book/:bookId"><BookDetailedView /></Route>

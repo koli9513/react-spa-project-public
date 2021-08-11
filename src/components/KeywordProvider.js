@@ -7,10 +7,7 @@ const words = [
     "endre+ady",
     "disney",
     "+inauthor:endre+ady",
-    // "+inauthor:jane+austen",
-    "frida+kahlo",
-    "+inauthor:agatha+christie",
-    "+inauthor:emily+bronte"
+    "+inauthor:jane+austen",
 
 ]
 

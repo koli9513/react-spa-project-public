@@ -1,10 +1,17 @@
 import axios from "axios";
-import {useState, useEffect} from "react";
+import {useState, useEffect, useContext} from "react";
 import {useParams} from "react-router-dom";
+import {BookDetailedViewStyle} from "./BookDetailedViewStyle";
+import ThemeContext from "./ThemeContext";
+import AppTheme from "./AppTheme";
+import {CoverImageStyle} from "./CoverImageStyle";
+import Globals from "./Globals";
 
 const BookDetailedView = () => {
     const [bookDetails, setBookDetails] = useState([]);
     const { bookId } = useParams();
+    const theme = useContext(ThemeContext)[0];
+    const currentTheme = AppTheme[theme];
 
     useEffect(() => {
         const getBookDetail = () => {
@@ -21,19 +28,19 @@ const BookDetailedView = () => {
     function correctMissingProperties(book) {
         return {
                 cover: book.volumeInfo.hasOwnProperty("imageLinks") === true ? book.volumeInfo.imageLinks.thumbnail :
-                    "https://st4.depositphotos.com/14953852/22772/v/600/depositphotos_227725020-stock-illustration-image-available-icon-flat-vector.jpg",
-                title: book.volumeInfo.title ? book.volumeInfo.title : "Not available",
-                author: book.volumeInfo.authors ? book.volumeInfo.authors : "Not available",
-                publishedDate: book.volumeInfo.publishedDate ? book.volumeInfo.publishedDate : "Not available",
-                subtitle: book.volumeInfo.subtitle ? book.volumeInfo.subtitle : "Not available",
-                publisher: book.volumeInfo.publisher ? book.volumeInfo.publisher : "Not available",
-                description: book.volumeInfo.description ? book.volumeInfo.description : "Description not available",
-                pageCount: book.volumeInfo.pageCount ? book.volumeInfo.pageCount : "Not available",
-                categories: book.volumeInfo.categories ? book.volumeInfo.categories : "Not available",
-                maturityRating: book.volumeInfo.maturityRating ? book.volumeInfo.maturityRating : "Not available",
+                    Globals.missingImgUrl,
+                title: book.volumeInfo.title ? book.volumeInfo.title : Globals.notAvailableMessage,
+                author: book.volumeInfo.authors ? book.volumeInfo.authors : Globals.notAvailableMessage,
+                publishedDate: book.volumeInfo.publishedDate ? book.volumeInfo.publishedDate : Globals.notAvailableMessage,
+                subtitle: book.volumeInfo.subtitle ? book.volumeInfo.subtitle : null,
+                publisher: book.volumeInfo.publisher ? book.volumeInfo.publisher : Globals.notAvailableMessage,
+                description: book.volumeInfo.description ? book.volumeInfo.description : Globals.notAvailableMessage,
+                pageCount: book.volumeInfo.pageCount ? book.volumeInfo.pageCount : Globals.notAvailableMessage,
+                categories: book.volumeInfo.categories ? book.volumeInfo.categories : Globals.notAvailableMessage,
+                maturityRating: book.volumeInfo.maturityRating ? book.volumeInfo.maturityRating : Globals.notAvailableMessage,
                 previewLink: book.volumeInfo.previewLink ? <a href={book.volumeInfo.previewLink}>Preview</a> : null,
-                language: book.volumeInfo.language ? book.volumeInfo.language : "Not available",
-                amount: book.saleInfo.listPrice ? book.saleInfo.listPrice.amount : "Unavailable",
+                language: book.volumeInfo.language ? book.volumeInfo.language : Globals.notAvailableMessage,
+                amount: book.saleInfo.listPrice ? book.saleInfo.listPrice.amount : Globals.notAvailableMessage,
                 currencyCode: book.saleInfo.listPrice ? book.saleInfo.listPrice.currencyCode : null,
                 buyLink: book.saleInfo.buyLink ? <a href={book.saleInfo.buyLink}>Buy</a> : null,
                 webReaderLink: book.accessInfo.webReaderLink ?
@@ -42,23 +49,43 @@ const BookDetailedView = () => {
     }
 
     return (
-        <div>
-            <img src={bookDetails.cover} alt="cover"/>
-            <h3>{bookDetails.title}</h3>
-            <h5>Subtitle: {bookDetails.subtitle}</h5>
-            <h4>Author(s): {bookDetails.author}</h4>
-            <h5>Published date: {bookDetails.publishedDate}</h5>
-            <h5>Publisher: {bookDetails.publisher}</h5>
-            <h6>{bookDetails.description}</h6>
-            <h5>Page count: {bookDetails.pageCount}</h5>
-            <h5>Categories: {bookDetails.categories}</h5>
-            <h5>Maturity rating: {bookDetails.maturityRating}</h5>
-            <h5>Language: {bookDetails.language}</h5>
-            <h5>List price: {bookDetails.amount} {bookDetails.currencyCode}</h5>
-            {bookDetails.buyLink}<br/>
-            {bookDetails.previewLink}<br/>
-            {bookDetails.webReaderLink}
-        </div>
+        <BookDetailedViewStyle style={{
+            backgroundColor: `${currentTheme.backgroundColor}`,
+            color: `${currentTheme.color}`,
+            border: `${currentTheme.borderColor}`,
+        }}>
+            <div className="wrapper">
+                <div className="image-left" style={{
+                    width: "15%",
+                    float:"left",
+                    height: "280px"
+                }}>
+                    <CoverImageStyle src={bookDetails.cover} alt="cover"/>
+                </div>
+                <div className="book-info-right" style={{
+                    width: "85%",
+                    float: "right",
+                    height: "280px"
+                }}>
+                    <h1>{bookDetails.title}</h1>
+                    <h3>{bookDetails.subtitle}</h3>
+                    <h2>Author(s): {bookDetails.author}</h2>
+                    <h3>Published date: {bookDetails.publishedDate}</h3>
+                    <h3>Publisher: {bookDetails.publisher}</h3>
+                </div>
+            </div>
+            <div dangerouslySetInnerHTML={{__html :bookDetails.description}} />
+            <h4>Page count: {bookDetails.pageCount}</h4>
+            <h4>Categories: {bookDetails.categories}</h4>
+            <h4>Maturity rating: {bookDetails.maturityRating}</h4>
+            <h4>Language: {bookDetails.language}</h4>
+            <h4>List price: {bookDetails.amount} {bookDetails.currencyCode}</h4>
+            <p style={{
+                textAlign: "center",
+                fontSize: "27px",
+                fontWeight: "bold"
+            }}>{bookDetails.buyLink}   {bookDetails.previewLink}   {bookDetails.webReaderLink}</p>
+        </BookDetailedViewStyle>
     );
 };
 
