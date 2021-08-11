@@ -7,6 +7,7 @@ const BookCard = (props) => {
   const [isFavorite, setIsFavorite] = useState(
     favoriteBooks.some((book) => book.id === props.id)
   );
+  const detailedViewUrl = `/book/${props.id}`;
 
   const addToFavoriteBooks = () => {
     setIsFavorite(true);
@@ -18,6 +19,7 @@ const BookCard = (props) => {
         author: props.author,
         date: props.published,
         id: props.id,
+        selfLink: props.selfLink
       },
     ]);
   };
@@ -43,6 +45,8 @@ const BookCard = (props) => {
       ) : (
         <button onClick={addToFavoriteBooks}>Add to favorites</button>
       )}
+      <br/>
+      <a href={detailedViewUrl}>Detail page</a>
     </BookCardStyle>
   );
 };
