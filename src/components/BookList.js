@@ -26,11 +26,11 @@ const BookList = () => {
   function correctMissingProperties(books) {
     return books.map((book) => {
       book = {
-        cover: book.volumeInfo.hasOwnProperty("imageLinks") ? book.volumeInfo.imageLinks.thumbnail :
-            missingImgUrl,
+        cover: book.volumeInfo.hasOwnProperty("imageLinks") ? book.volumeInfo.imageLinks.thumbnail : missingImgUrl,
         title: book.volumeInfo.title ? book.volumeInfo.title : "Not available",
         author: book.volumeInfo.authors ? book.volumeInfo.authors : "Not available",
         publishedDate: book.volumeInfo.publishedDate ? book.volumeInfo.publishedDate : "Not available",
+        id: book.id
       }
       return book;
     });

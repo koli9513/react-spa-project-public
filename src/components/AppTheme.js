@@ -10,7 +10,7 @@ const AppTheme = {
     color: "#23ffa2",
     backgroundColor: "#093f29",
     borderColor: '2px solid #372964',
-    cardBorderColor: '2px solid #372964',
+    cardBorderColor: '2px solid #23ffa2',
     cardBackgroundColor: "#0d7249",
   },
 };
