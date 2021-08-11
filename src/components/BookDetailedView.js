@@ -54,25 +54,15 @@ const BookDetailedView = () => {
             color: `${currentTheme.color}`,
             border: `${currentTheme.borderColor}`,
         }}>
-            <div className="wrapper">
-                <div className="image-left" style={{
-                    width: "15%",
-                    float:"left",
-                    height: "280px"
-                }}>
-                    <CoverImageStyle src={bookDetails.cover} alt="cover"/>
-                </div>
-                <div className="book-info-right" style={{
-                    width: "85%",
-                    float: "right",
-                    height: "280px"
-                }}>
-                    <h1>{bookDetails.title}</h1>
-                    <h3>{bookDetails.subtitle}</h3>
-                    <h2>Author(s): {bookDetails.author}</h2>
-                    <h3>Published date: {bookDetails.publishedDate}</h3>
-                    <h3>Publisher: {bookDetails.publisher}</h3>
-                </div>
+            <div className="image-left">
+                <CoverImageStyle src={bookDetails.cover} alt="cover"/>
+            </div>
+            <div className="book-info-right">
+                <h1>{bookDetails.title}</h1>
+                <h3>{bookDetails.subtitle}</h3>
+                <h2>Author(s): {bookDetails.author}</h2>
+                <h3>Published date: {bookDetails.publishedDate}</h3>
+                <h3>Publisher: {bookDetails.publisher}</h3>
             </div>
             <div dangerouslySetInnerHTML={{__html :bookDetails.description}} />
             <h4>Page count: {bookDetails.pageCount}</h4>
@@ -80,11 +70,7 @@ const BookDetailedView = () => {
             <h4>Maturity rating: {bookDetails.maturityRating}</h4>
             <h4>Language: {bookDetails.language}</h4>
             <h4>List price: {bookDetails.amount} {bookDetails.currencyCode}</h4>
-            <p style={{
-                textAlign: "center",
-                fontSize: "27px",
-                fontWeight: "bold"
-            }}>{bookDetails.buyLink}   {bookDetails.previewLink}   {bookDetails.webReaderLink}</p>
+            <div className="links">{bookDetails.buyLink}   {bookDetails.previewLink}   {bookDetails.webReaderLink}</div>
         </BookDetailedViewStyle>
     );
 };

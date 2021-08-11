@@ -28,7 +28,7 @@ const BookList = () => {
       book = {
         cover: book.volumeInfo.hasOwnProperty("imageLinks") ? book.volumeInfo.imageLinks.thumbnail : Globals.missingImgUrl,
         title: book.volumeInfo.title ? book.volumeInfo.title : Globals.notAvailableMessage,
-        authors: book.volumeInfo.authors ? book.volumeInfo.authors : Globals.notAvailableMessage,
+        authors: book.volumeInfo.authors ? book.volumeInfo.authors.join(", ") : [],
         publishedDate: book.volumeInfo.publishedDate ? book.volumeInfo.publishedDate : Globals.notAvailableMessage,
         id: book.id
       }

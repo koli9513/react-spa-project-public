@@ -2,7 +2,10 @@ import styled, {css} from "styled-components";
 
 export const BookCardStyle = styled.div
     .attrs({className: 'card'})`
-  //border: 1px solid black;
-  //
-  //border: 1px aqua solid;
+  > .image-left {
+    //width: 15%;
+    float: left;
+    height: 280px;
+    min-width: 190px;
+  }
 `;
