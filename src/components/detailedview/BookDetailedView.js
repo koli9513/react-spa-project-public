@@ -34,7 +34,7 @@ const BookDetailedView = () => {
                 publishedDate: book.volumeInfo.publishedDate ? book.volumeInfo.publishedDate : Globals.notAvailableMessage,
                 subtitle: book.volumeInfo.subtitle ? book.volumeInfo.subtitle : null,
                 publisher: book.volumeInfo.publisher ? book.volumeInfo.publisher : Globals.notAvailableMessage,
-                description: book.volumeInfo.description ? book.volumeInfo.description : Globals.notAvailableMessage,
+                description: book.volumeInfo.description ? book.volumeInfo.description : null,
                 pageCount: book.volumeInfo.pageCount ? book.volumeInfo.pageCount : Globals.notAvailableMessage,
                 categories: book.volumeInfo.categories ? book.volumeInfo.categories : Globals.notAvailableMessage,
                 maturityRating: book.volumeInfo.maturityRating ? book.volumeInfo.maturityRating : Globals.notAvailableMessage,
