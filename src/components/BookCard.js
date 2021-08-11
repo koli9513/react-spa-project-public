@@ -4,7 +4,9 @@ import { FavoriteContext } from "./FavoriteContext";
 import AppTheme from "./AppTheme";
 import ThemeContext from "./ThemeContext";
 import {CoverImageStyle} from "./CoverImageStyle";
-import {Link} from "react-router-dom";
+import {StyledDetailedLink} from "./StyledDetailedLink";
+import FlipHelper from "./FlipHelper";
+import {StyledFavouriteButton} from "./StyledFavouriteButton";
 
 const BookCard = (props) => {
   const { favoriteBooks, setFavoriteBooks } = useContext(FavoriteContext);
@@ -37,22 +39,32 @@ const BookCard = (props) => {
     setFavoriteBooks(updatedFavoriteBooks);
   };
 
+  const BookInfo =
+      <div>
+        <h4>{props.title}</h4>
+        <h5>{props.authors}</h5>
+        <p>{props.published}</p>
+      </div>
+
+  const ActionPage =
+      <div style={{width: "190px", height: "120px"}}>
+        {isFavorite ? (
+            <StyledFavouriteButton onClick={removeFromFavoriteBooks}>Add favourite</StyledFavouriteButton>
+        ) : (
+            <StyledFavouriteButton onClick={addToFavoriteBooks}>Remove favourite</StyledFavouriteButton>
+        )}
+        <br/>
+        <StyledDetailedLink to={detailedViewUrl}>More information</StyledDetailedLink>
+      </div>
+
   return (
     <BookCardStyle style={{
       backgroundColor: `${currentTheme.cardBackgroundColor}`,
       border: `${currentTheme.cardBorderColor}`,
     }}>
       <CoverImageStyle src={props.cover} alt="cover" />
-      <h4>{props.title}</h4>
-      <h5>{props.authors}</h5>
-      <p>{props.published}</p>
-      {isFavorite ? (
-        <button onClick={removeFromFavoriteBooks}>Remove from favorites</button>
-      ) : (
-        <button onClick={addToFavoriteBooks}>Add to favorites</button>
-      )}
-      <br/>
-      <Link to={detailedViewUrl}>Detail page</Link>
+      <FlipHelper cardBack={ActionPage}
+            cardFront={BookInfo}/>
     </BookCardStyle>
   );
 };
