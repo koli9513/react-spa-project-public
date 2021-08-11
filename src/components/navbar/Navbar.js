@@ -5,32 +5,58 @@ import NavbarTheme from "../theme/NavbarTheme";
 import {StyledNavbar} from "../styles/StyledNavbar";
 import ThemeToggler from "../theme/ThemeToggler";
 import SearchBox from "../search/SearchBox";
+import {StyledNavbarLink} from "../styles/StyledNavbarLink";
+import {StyledSearchBox} from "../styles/StyledSearchBox";
+import ButtonTheme from "../theme/ButtonTheme";
+import CatGif from "../theme/CatGif";
 
 const Navbar = () => {
   const theme = useContext(ThemeContext)[0];
-  const currentTheme = NavbarTheme[theme];
+  const navbarTheme = NavbarTheme[theme];
+  const buttonTheme = ButtonTheme[theme];
+  const navLinkContainerStyle = {
+      float: "left",
+      left: "17%",
+      position: "absolute"
+  }
 
   return (
-      <StyledNavbar style={{
-        backgroundColor: `${currentTheme.backgroundColor}`,
-        color: `${currentTheme.color}`,
-      }}>
-        <ThemeToggler />
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <SearchBox />
-            <li>
-              <Link to="/favorites">Favorites</Link>
-            </li>
-            <li>
-              <Link to="/genres">Genres</Link>
-            </li>
-          </ul>
-        </nav>
-      </StyledNavbar>
+      <div>
+          <StyledNavbar style={{
+            backgroundColor: `${navbarTheme.backgroundColor}`,
+            color: `${navbarTheme.color}`,
+            borderColor: `${navbarTheme.borderColor}`
+          }}>
+            <ThemeToggler />
+              <div style={navLinkContainerStyle}>
+                <StyledNavbarLink to="/" style={{
+                    backgroundColor: `${buttonTheme.backgroundColor}`,
+                    color: `${buttonTheme.color}`,
+                    borderColor: `${buttonTheme.borderColor}`
+                }}>Home</StyledNavbarLink>
+                <StyledNavbarLink style={{
+                    backgroundColor: `${buttonTheme.backgroundColor}`,
+                    color: `${buttonTheme.color}`,
+                    borderColor: `${buttonTheme.borderColor}`
+                }} to="/favorites">Favorites</StyledNavbarLink>
+                <StyledNavbarLink style={{
+                    backgroundColor: `${buttonTheme.backgroundColor}`,
+                    color: `${buttonTheme.color}`,
+                    borderColor: `${buttonTheme.borderColor}`
+                }} to="/genres">Genres</StyledNavbarLink>
+              </div>
+              <CatGif cat="1"/>
+              <CatGif cat="2"/>
+          </StyledNavbar>
+          <StyledSearchBox style={{
+              backgroundColor: `${navbarTheme.backgroundColor}`,
+              color: `${navbarTheme.color}`,
+              borderColor: `${buttonTheme.borderColor}`
+          }}>
+              <SearchBox />
+
+          </StyledSearchBox>
+      </div>
   );
 };
 
