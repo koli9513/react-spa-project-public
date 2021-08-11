@@ -24,7 +24,7 @@ function App() {
                 <Route exact path="/">
                   <BookList />
                 </Route>
-                <Route path="/search/:searchTerm">
+                <Route path="/search/:searchType/:searchTerm">
                   <SearchList/>
                 </Route>
                 <Route path="/genres">Genres</Route>
