@@ -25,7 +25,7 @@ const Navbar = () => {
           <StyledNavbar style={{
             backgroundColor: `${navbarTheme.backgroundColor}`,
             color: `${navbarTheme.color}`,
-            borderColor: `${navbarTheme.borderColor}`
+            border: `${navbarTheme.borderColor}`
           }}>
             <ThemeToggler />
               <div style={navLinkContainerStyle}>
@@ -51,7 +51,7 @@ const Navbar = () => {
           <StyledSearchBox style={{
               backgroundColor: `${navbarTheme.backgroundColor}`,
               color: `${navbarTheme.color}`,
-              borderColor: `${buttonTheme.borderColor}`
+
           }}>
               <SearchBox />
 
