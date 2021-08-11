@@ -1,11 +1,17 @@
 const AppTheme = {
   normal: {
     color: "#372964",
-    backgroundColor: "#9a79dc"
+    backgroundColor: "#9a79dc",
+    borderColor: '2px solid #31e6a5',
+    cardBorderColor: "2px solid #31e6a5",
+    cardBackgroundColor: "#c0abf1",
   },
   dark: {
     color: "#23ffa2",
-    backgroundColor: "#093f29"
+    backgroundColor: "#093f29",
+    borderColor: '2px solid #372964',
+    cardBorderColor: '2px solid #372964',
+    cardBackgroundColor: "#0d7249",
   },
 };
 

@@ -1,12 +1,17 @@
 import React, { useState, useContext } from "react";
 import { BookCardStyle } from "./BookCardStyle";
 import { FavoriteContext } from "./FavoriteContext";
+import AppTheme from "./AppTheme";
+import ThemeContext from "./ThemeContext";
+import {CoverImageStyle} from "./CoverImageStyle";
 
 const BookCard = (props) => {
   const { favoriteBooks, setFavoriteBooks } = useContext(FavoriteContext);
   const [isFavorite, setIsFavorite] = useState(
     favoriteBooks.some((book) => book.id === props.id)
   );
+  const theme = useContext(ThemeContext)[0];
+  const currentTheme = AppTheme[theme];
 
   const addToFavoriteBooks = () => {
     setIsFavorite(true);
@@ -31,8 +36,11 @@ const BookCard = (props) => {
   };
 
   return (
-    <BookCardStyle>
-      <img src={props.cover} alt="cover" />
+    <BookCardStyle style={{
+      backgroundColor: `${currentTheme.cardBackgroundColor}`,
+      border: `${currentTheme.cardBorderColor}`,
+    }}>
+      <CoverImageStyle src={props.cover} alt="cover" />
       <div className="book info">
         <h5>{props.title}</h5>
         <h6>{props.author}</h6>
