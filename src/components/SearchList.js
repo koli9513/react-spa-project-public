@@ -12,10 +12,10 @@ const SearchList = () => {
     const currentTheme = AppTheme[theme];
     const missingImgUrl = "https://st4.depositphotos.com/14953852/22772/v/600/depositphotos_227725020-stock-illustration-image-available-icon-flat-vector.jpg";
     const { searchType, searchTerm } = useParams();
-    const srchtp = searchType === 'author' ? '+inauthor:' : '+intitle:'
+    const searchBy = searchType === 'author' ? '+inauthor:' : '+intitle:'
 
     const [books, setBooks] = useState([]);
-    const url = `https://www.googleapis.com/books/v1/volumes?q=${srchtp}${searchTerm}&maxResults=30`;
+    const url = `https://www.googleapis.com/books/v1/volumes?q=${searchBy}${searchTerm}&maxResults=30`;
     const getBooks = () => {
         axios.get(url).then((response) => {
             console.log(url)
@@ -24,12 +24,6 @@ const SearchList = () => {
             setBooks(cleaned);
         });
     };
-
-
-
-
-
-
 
     function correctMissingProperties(books) {
         return books.map((book) => {
