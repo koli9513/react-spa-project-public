@@ -19,6 +19,11 @@ const Navbar = () => {
       left: "17%",
       position: "absolute"
   }
+  const navLinkStyle = {
+      backgroundColor: `${buttonTheme.backgroundColor}`,
+      color: `${buttonTheme.color}`,
+      borderColor: `${buttonTheme.borderColor}`
+  }
 
   return (
       <div>
@@ -29,21 +34,10 @@ const Navbar = () => {
           }}>
             <ThemeToggler />
               <div style={navLinkContainerStyle}>
-                <StyledNavbarLink to="/" style={{
-                    backgroundColor: `${buttonTheme.backgroundColor}`,
-                    color: `${buttonTheme.color}`,
-                    borderColor: `${buttonTheme.borderColor}`
-                }}>Home</StyledNavbarLink>
-                <StyledNavbarLink style={{
-                    backgroundColor: `${buttonTheme.backgroundColor}`,
-                    color: `${buttonTheme.color}`,
-                    borderColor: `${buttonTheme.borderColor}`
-                }} to="/favorites">Favorites</StyledNavbarLink>
-                <StyledNavbarLink style={{
-                    backgroundColor: `${buttonTheme.backgroundColor}`,
-                    color: `${buttonTheme.color}`,
-                    borderColor: `${buttonTheme.borderColor}`
-                }} to="/genres">Genres</StyledNavbarLink>
+                <StyledNavbarLink to="/" style={navLinkStyle}>Home</StyledNavbarLink>
+                {/*<StyledNavbarLink to="/browse" style={navLinkStyle}>Browse books</StyledNavbarLink>*/}
+                <StyledNavbarLink style={navLinkStyle} to="/favorites">Favorites</StyledNavbarLink>
+                <StyledNavbarLink style={navLinkStyle} to="/genres">Genres</StyledNavbarLink>
               </div>
               <CatGif cat="1"/>
               <CatGif cat="2"/>

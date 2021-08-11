@@ -22,7 +22,7 @@ const SearchBox = () => {
         setSearch({...search, searchType: e.target.value})
     }
 
-    const buttonStyle = {
+    const searchBarStyle = {
         backgroundColor: `${buttonTheme.backgroundColor}`,
         color: `${buttonTheme.color}`,
         borderColor: `${buttonTheme.borderColor}`
@@ -39,16 +39,16 @@ const SearchBox = () => {
                 window.location.replace(`/search/${search.searchType}/${search.searchTerm}`)
             }}>
                 <input onChange={getSearchTerm} placeholder="search books..." type="text"
-                       style={buttonStyle}/>
+                       style={searchBarStyle}/>
                 <select onChange={getSearchType} name="searchType" id="searchType"
-                        style={buttonStyle}>
+                        style={searchBarStyle}>
                     <option value="title">title</option>
                     <option value="author">author</option>
                     <option value="publisher">publisher</option>
                     <option value="subject">subject</option>
                     <option value="isbn">isbn</option>
                 </select>
-                <button style={buttonStyle} type="submit">Search</button>
+                <button style={searchBarStyle} type="submit">Search</button>
             </form>
         </StyledSearchBox>
     )
