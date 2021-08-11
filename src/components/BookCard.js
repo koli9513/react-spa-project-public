@@ -22,7 +22,7 @@ const BookCard = (props) => {
       {
         cover: props.cover,
         title: props.title,
-        author: props.author,
+        authors: props.authors,
         date: props.published,
         id: props.id,
       },
@@ -44,8 +44,8 @@ const BookCard = (props) => {
     }}>
       <CoverImageStyle src={props.cover} alt="cover" />
       <div className="book info">
-        <h5>{props.title}</h5>
-        <h6>{props.author}</h6>
+        <h4>{props.title}</h4>
+        <h5>{props.authors}</h5>
         <p>{props.published}</p>
       </div>
       {isFavorite ? (
