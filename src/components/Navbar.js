@@ -4,6 +4,7 @@ import {useContext} from "react";
 import NavbarTheme from "./NavbarTheme";
 import {NavbarStyle} from "./NavbarStyle";
 import ThemeToggler from "./ThemeToggler";
+import SearchBox from "./SearchBox";
 
 const Navbar = () => {
   const theme = useContext(ThemeContext)[0];
@@ -20,7 +21,7 @@ const Navbar = () => {
             <li>
               <Link to="/">Home</Link>
             </li>
-            <li>Search</li>
+            <SearchBox />
             <li>
               <Link to="/favorites">Favorites</Link>
             </li>

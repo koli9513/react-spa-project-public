@@ -23,6 +23,12 @@ const BookList = () => {
     });
   };
 
+
+
+
+
+
+
   function correctMissingProperties(books) {
     return books.map((book) => {
       book = {
@@ -57,9 +63,9 @@ const BookList = () => {
           id={book.id}
           fromFavoriteList={false}
         />
-      ))}
+        ))}
     </BookCardsContainerStyle>
-  );
+        );
 };
 
 export default BookList;

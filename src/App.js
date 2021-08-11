@@ -7,6 +7,8 @@ import "./App.css";
 import FavoriteList from "./components/FavoriteList";
 import ThemeContext from "./components/ThemeContext";
 import BookDetailedView from "./components/BookDetailedView";
+
+
 function App() {
   const [favoriteBooks, setFavoriteBooks] = useState([]);
   const themeHook = useState("normal");
@@ -20,6 +22,9 @@ function App() {
               <Switch>
                 <Route exact path="/">
                   <BookList />
+                </Route>
+                <Route path="/search/:searchTerm">
+
                 </Route>
                 <Route path="/genres">Genres</Route>
                 <Route path="/favorites"><FavoriteList /></Route>
