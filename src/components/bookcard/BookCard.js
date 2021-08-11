@@ -1,12 +1,12 @@
 import React, { useState, useContext } from "react";
-import { BookCardStyle } from "./BookCardStyle";
-import { FavoriteContext } from "./FavoriteContext";
-import AppTheme from "./AppTheme";
-import ThemeContext from "./ThemeContext";
-import {CoverImageStyle} from "./CoverImageStyle";
-import {StyledDetailedLink} from "./StyledDetailedLink";
-import FlipHelper from "./FlipHelper";
-import {StyledFavouriteButton} from "./StyledFavouriteButton";
+import { StyledBookCard } from "../styles/StyledBookCard";
+import { FavoriteContext } from "../contexts/FavoriteContext";
+import AppTheme from "../theme/AppTheme";
+import ThemeContext from "../contexts/ThemeContext";
+import {StyledCoverImage} from "../styles/StyledCoverImage";
+import {StyledDetailedLink} from "../styles/StyledDetailedLink";
+import FlipHelper from "../helpers/FlipHelper";
+import {StyledFavouriteButton} from "../styles/StyledFavouriteButton";
 
 const BookCard = (props) => {
   const { favoriteBooks, setFavoriteBooks } = useContext(FavoriteContext);
@@ -58,14 +58,14 @@ const BookCard = (props) => {
       </div>
 
   return (
-    <BookCardStyle style={{
+    <StyledBookCard style={{
       backgroundColor: `${currentTheme.cardBackgroundColor}`,
       border: `${currentTheme.cardBorderColor}`,
     }}>
-      <CoverImageStyle src={props.cover} alt="cover" />
+      <StyledCoverImage src={props.cover} alt="cover" />
       <FlipHelper cardBack={ActionPage}
             cardFront={BookInfo}/>
-    </BookCardStyle>
+    </StyledBookCard>
   );
 };
 

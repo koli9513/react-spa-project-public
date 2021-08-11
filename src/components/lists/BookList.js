@@ -1,11 +1,11 @@
 import axios from "axios";
 import {useState, useEffect, useContext} from "react";
-import BookCard from "./BookCard";
+import BookCard from "../bookcard/BookCard";
 import { BookCardsContainerStyle } from "./BookCardContainerStyle";
-import AppTheme from "./AppTheme";
-import ThemeContext from "./ThemeContext";
-import {KeywordProvider} from "./KeywordProvider";
-import Globals from "./Globals";
+import AppTheme from "../theme/AppTheme";
+import ThemeContext from "../contexts/ThemeContext";
+import {KeywordProvider} from "../helpers/KeywordProvider";
+import Globals from "../helpers/Globals";
 
 
 const BookList = () => {

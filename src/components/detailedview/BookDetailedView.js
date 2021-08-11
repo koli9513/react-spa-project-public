@@ -1,11 +1,11 @@
 import axios from "axios";
 import {useState, useEffect, useContext} from "react";
 import {useParams} from "react-router-dom";
-import {BookDetailedViewStyle} from "./BookDetailedViewStyle";
-import ThemeContext from "./ThemeContext";
-import AppTheme from "./AppTheme";
-import {CoverImageStyle} from "./CoverImageStyle";
-import Globals from "./Globals";
+import {StyledBookDetailedView} from "../styles/StyledBookDetailedView";
+import ThemeContext from "../contexts/ThemeContext";
+import AppTheme from "../theme/AppTheme";
+import {StyledCoverImage} from "../styles/StyledCoverImage";
+import Globals from "../helpers/Globals";
 
 const BookDetailedView = () => {
     const [bookDetails, setBookDetails] = useState([]);
@@ -49,13 +49,13 @@ const BookDetailedView = () => {
     }
 
     return (
-        <BookDetailedViewStyle style={{
+        <StyledBookDetailedView style={{
             backgroundColor: `${currentTheme.backgroundColor}`,
             color: `${currentTheme.color}`,
             border: `${currentTheme.borderColor}`,
         }}>
             <div className="image-left">
-                <CoverImageStyle src={bookDetails.cover} alt="cover"/>
+                <StyledCoverImage src={bookDetails.cover} alt="cover"/>
             </div>
             <div className="book-info-right">
                 <h1>{bookDetails.title}</h1>
@@ -71,7 +71,7 @@ const BookDetailedView = () => {
             <h4>Language: {bookDetails.language}</h4>
             <h4>List price: {bookDetails.amount} {bookDetails.currencyCode}</h4>
             <div className="links">{bookDetails.buyLink}   {bookDetails.previewLink}   {bookDetails.webReaderLink}</div>
-        </BookDetailedViewStyle>
+        </StyledBookDetailedView>
     );
 };
 

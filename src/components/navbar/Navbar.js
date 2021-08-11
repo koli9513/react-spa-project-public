@@ -1,17 +1,17 @@
 import { Link } from "react-router-dom";
-import ThemeContext from "./ThemeContext";
+import ThemeContext from "../contexts/ThemeContext";
 import {useContext} from "react";
-import NavbarTheme from "./NavbarTheme";
-import {NavbarStyle} from "./NavbarStyle";
-import ThemeToggler from "./ThemeToggler";
-import SearchBox from "./SearchBox";
+import NavbarTheme from "../theme/NavbarTheme";
+import {StyledNavbar} from "../styles/StyledNavbar";
+import ThemeToggler from "../theme/ThemeToggler";
+import SearchBox from "../search/SearchBox";
 
 const Navbar = () => {
   const theme = useContext(ThemeContext)[0];
   const currentTheme = NavbarTheme[theme];
 
   return (
-      <NavbarStyle style={{
+      <StyledNavbar style={{
         backgroundColor: `${currentTheme.backgroundColor}`,
         color: `${currentTheme.color}`,
       }}>
@@ -30,7 +30,7 @@ const Navbar = () => {
             </li>
           </ul>
         </nav>
-      </NavbarStyle>
+      </StyledNavbar>
   );
 };
 

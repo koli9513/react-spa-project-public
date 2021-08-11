@@ -1,6 +1,6 @@
 import styled, {css} from "styled-components";
 
-export const BookCardStyle = styled.div
+export const StyledBookCard = styled.div
     .attrs({className: 'card'})`
   position: relative;
   
