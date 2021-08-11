@@ -42,8 +42,11 @@ const SearchBox = () => {
                        style={buttonStyle}/>
                 <select onChange={getSearchType} name="searchType" id="searchType"
                         style={buttonStyle}>
-                    <option value="title">Title</option>
-                    <option value="author">Author</option>
+                    <option value="title">title</option>
+                    <option value="author">author</option>
+                    <option value="publisher">publisher</option>
+                    <option value="subject">subject</option>
+                    <option value="isbn">isbn</option>
                 </select>
                 <button style={buttonStyle} type="submit">Search</button>
             </form>
