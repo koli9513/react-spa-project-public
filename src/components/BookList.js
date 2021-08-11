@@ -1,9 +1,15 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import {useState, useEffect, useContext} from "react";
 import BookCard from "./BookCard";
 import { BookCardsContainerStyle } from "./BookCardContainerStyle";
+import AppTheme from "./AppTheme";
+import ThemeContext from "./ThemeContext";
+
 
 const BookList = () => {
+  const theme = useContext(ThemeContext)[0];
+  const currentTheme = AppTheme[theme];
+
   const [books, setBooks] = useState([]);
   const url = `https://www.googleapis.com/books/v1/volumes?q="${getRandomLetter()}&maxResults=30`;
   const getBooks = () => {
@@ -38,7 +44,11 @@ const BookList = () => {
   }, []);
 
   return (
-    <BookCardsContainerStyle>
+      <BookCardsContainerStyle
+          style={{
+            backgroundColor: `${currentTheme.backgroundColor}`,
+            color: `${currentTheme.color}`,
+          }}>
       {books.map((book, index) => (
         <BookCard
           key={index}
