@@ -43,11 +43,9 @@ const BookCard = (props) => {
       border: `${currentTheme.cardBorderColor}`,
     }}>
       <CoverImageStyle src={props.cover} alt="cover" />
-      <div className="book info">
-        <h4>{props.title}</h4>
-        <h5>{props.authors}</h5>
-        <p>{props.published}</p>
-      </div>
+      <h4>{props.title}</h4>
+      <h5>{props.authors}</h5>
+      <p>{props.published}</p>
       {isFavorite ? (
         <button onClick={removeFromFavoriteBooks}>Remove from favorites</button>
       ) : (
