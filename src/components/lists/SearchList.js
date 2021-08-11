@@ -1,7 +1,7 @@
 import axios from "axios";
 import {useState, useEffect, useContext} from "react";
 import BookCard from "../bookcard/BookCard";
-import { BookCardsContainerStyle } from "./BookCardContainerStyle";
+import { BookCardsContainerStyle } from "../styles/BookCardContainerStyle";
 import AppTheme from "../theme/AppTheme";
 import ThemeContext from "../contexts/ThemeContext";
 import {useParams} from "react-router-dom";
