@@ -16,9 +16,6 @@ const SearchBox = () => {
         setSearch({...search, searchType: e.target.value})
     }
 
-
-
-
     return(
         <div className="search-box">
             <form onSubmit={e => {
