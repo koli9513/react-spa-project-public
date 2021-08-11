@@ -62,7 +62,7 @@ const BookCard = (props) => {
             backgroundColor: `${buttonTheme.backgroundColor}`,
             color: `${buttonTheme.color}`,
             borderColor: `${buttonTheme.borderColor}`
-          }} to={detailedViewUrl}>Details</StyledDetailedLink>
+          }} to={detailedViewUrl}>More information</StyledDetailedLink>
         </div>
       }
                   cardFront={<BookInfo props={props}/>}/>

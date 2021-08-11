@@ -8,7 +8,7 @@ export const StyledDetailedLink = styled(Link)`
     padding: 2px;
     text-align: center;
     top: 70%;
-    left: 35%;
+    left: 13%;
     position: absolute;
     font-size: 18px;
     text-decoration: none;
