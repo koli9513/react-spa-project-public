@@ -4,8 +4,10 @@ import Navbar from "./components/Navbar";
 import {useState} from "react";
 import { FavoriteContext } from "./components/FavoriteContext";
 import "./App.css";
+import FavoriteList from "./components/FavoriteList";
 import ThemeContext from "./components/ThemeContext";
 import BookDetailedView from "./components/BookDetailedView";
+
 
 function App() {
   const [favoriteBooks, setFavoriteBooks] = useState([]);
@@ -22,7 +24,7 @@ function App() {
                   <BookList />
                 </Route>
                 <Route path="/genres">Genres</Route>
-                <Route path="/favorites">Favorites</Route>
+                <Route path="/favorites"><FavoriteList /></Route>
                 <Route path="/book/:bookId"><BookDetailedView /></Route>
               </Switch>
             </div>
