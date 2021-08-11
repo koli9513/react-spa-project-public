@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { FavoriteContext } from "./FavoriteContext";
-import BookCard from "./BookCard";
+import { FavoriteContext } from "../contexts/FavoriteContext";
+import BookCard from "../bookcard/BookCard";
 import { BookCardsContainerStyle } from "./BookCardContainerStyle";
 
 const FavoriteList = () => {

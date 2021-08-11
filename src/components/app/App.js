@@ -1,13 +1,13 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import BookList from "./components/BookList";
-import Navbar from "./components/Navbar";
+import BookList from "../lists/BookList";
+import Navbar from "../navbar/Navbar";
 import {useState} from "react";
-import { FavoriteContext } from "./components/FavoriteContext";
+import { FavoriteContext } from "../contexts/FavoriteContext";
 import "./App.css";
-import FavoriteList from "./components/FavoriteList";
-import ThemeContext from "./components/ThemeContext";
-import BookDetailedView from "./components/BookDetailedView";
-import SearchList from "./components/SearchList";
+import FavoriteList from "../lists/FavoriteList";
+import ThemeContext from "../contexts/ThemeContext";
+import BookDetailedView from "../detailedview/BookDetailedView";
+import SearchList from "../lists/SearchList";
 
 
 function App() {
@@ -21,12 +21,9 @@ function App() {
             <div className="App">
               <Navbar />
               <Switch>
-                <Route exact path="/">
-                  <BookList />
-                </Route>
-                <Route path="/search/:searchType/:searchTerm">
-                  <SearchList/>
-                </Route>
+                <Route exact path="/"><BookList /></Route>
+                <Route exact path="/"><BookList /></Route>
+                <Route path="/search/:searchType/:searchTerm"><SearchList/></Route>
                 <Route path="/genres">Genres</Route>
                 <Route path="/favorites"><FavoriteList /></Route>
                 <Route path="/book/:bookId"><BookDetailedView /></Route>
