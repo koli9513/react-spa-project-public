@@ -4,6 +4,7 @@ import { FavoriteContext } from "./FavoriteContext";
 import AppTheme from "./AppTheme";
 import ThemeContext from "./ThemeContext";
 import {CoverImageStyle} from "./CoverImageStyle";
+import {Link} from "react-router-dom";
 
 const BookCard = (props) => {
   const { favoriteBooks, setFavoriteBooks } = useContext(FavoriteContext);
@@ -53,7 +54,7 @@ const BookCard = (props) => {
         <button onClick={addToFavoriteBooks}>Add to favorites</button>
       )}
       <br/>
-      <a href={detailedViewUrl}>Detail page</a>
+      <Link to={detailedViewUrl}>Detail page</Link>
     </BookCardStyle>
   );
 };
