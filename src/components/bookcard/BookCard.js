@@ -7,6 +7,9 @@ import {StyledCoverImage} from "../styles/StyledCoverImage";
 import FlipHelper from "../helpers/FlipHelper";
 import {BookInfo} from "../elements/BookInfo";
 import {ActionItems} from "../elements/ActionItems";
+import {StyledFavouriteButton} from "../styles/StyledFavouriteButton";
+import {StyledDetailedLink} from "../styles/StyledDetailedLink";
+import ButtonTheme from "../theme/ButtonTheme";
 
 const BookCard = (props) => {
   const { favoriteBooks, setFavoriteBooks } = useContext(FavoriteContext);
@@ -16,6 +19,7 @@ const BookCard = (props) => {
   const detailedViewUrl = `/book/${props.id}`;
   const theme = useContext(ThemeContext)[0];
   const currentTheme = AppTheme[theme];
+  const buttonTheme = ButtonTheme[theme];
 
   const addToFavoriteBooks = () => {
     setIsFavorite(true);
@@ -46,10 +50,21 @@ const BookCard = (props) => {
       border: `${currentTheme.cardBorderColor}`,
     }}>
       <StyledCoverImage src={props.cover} alt="cover" />
-      <FlipHelper cardBack={<ActionItems  removeFromFavoriteBooks={removeFromFavoriteBooks}
-                                          addToFavoriteBooks={addToFavoriteBooks}
-                                          detailedViewUrl={detailedViewUrl}
-                                          isFavorite={isFavorite}/>}
+      <FlipHelper cardBack={
+        <div style={{width: "190px", height: "120px"}}>
+          {isFavorite ? (
+              <StyledFavouriteButton onClick={removeFromFavoriteBooks}>Remove favourite</StyledFavouriteButton>
+          ) : (
+              <StyledFavouriteButton onClick={addToFavoriteBooks}>Add favourite</StyledFavouriteButton>
+          )}
+          <br/>
+          <StyledDetailedLink style={{
+            backgroundColor: `${buttonTheme.backgroundColor}`,
+            color: `${buttonTheme.color}`,
+            borderColor: `${buttonTheme.borderColor}`
+          }} to={detailedViewUrl}>Details</StyledDetailedLink>
+        </div>
+      }
                   cardFront={<BookInfo props={props}/>}/>
     </StyledBookCard>
   );
