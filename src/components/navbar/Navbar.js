@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import ThemeContext from "../contexts/ThemeContext";
 import { useContext } from "react";
 import NavbarTheme from "../theme/NavbarTheme";
@@ -9,7 +8,6 @@ import { StyledNavbarLink } from "../styles/StyledNavbarLink";
 import { StyledSearchBox } from "../styles/StyledSearchBox";
 import ButtonTheme from "../theme/ButtonTheme";
 import CatGif from "../theme/CatGif";
-import Genres from "../genres/Genres";
 
 const Navbar = () => {
   const theme = useContext(ThemeContext)[0];
