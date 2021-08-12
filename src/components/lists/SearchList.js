@@ -7,17 +7,6 @@ import { useParams } from "react-router-dom";
 import useFetch from "../helpers/useFetch";
 
 const SearchList = () => {
-  const theme = useContext(ThemeContext)[0];
-  const currentTheme = AppTheme[theme];
-  const { searchType, searchTerm } = useParams();
-  const searchBy = searchType === "author" ? "+inauthor:" : "+intitle:";
-  const url = `https://www.googleapis.com/books/v1/volumes?q=${searchBy}${searchTerm}&maxResults=30`;
-
-import {useParams} from "react-router-dom";
-import Globals from "../helpers/Globals";
-
-
-const SearchList = () => {
     const theme = useContext(ThemeContext)[0];
     const currentTheme = AppTheme[theme];
     const { searchType, searchTerm } = useParams();
@@ -52,7 +41,7 @@ const SearchList = () => {
         <BookCard
           key={index}
           cover={book.cover}
-          author={book.authors}
+          authors={book.authors}
           title={book.title}
           published={book.publishedDate}
           id={book.id}
