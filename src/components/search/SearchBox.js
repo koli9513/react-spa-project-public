@@ -9,14 +9,16 @@ import { useHistory } from "react-router-dom";
 import Genres from "../genres/Genres";
 
 const SearchBox = () => {
-  const [search, setSearch] = useState({
-    searchTerm: "",
-    searchType: "title",
-  });
-  const theme = useContext(ThemeContext)[0];
-  const navbarTheme = NavbarTheme[theme];
-  const buttonTheme = ButtonTheme[theme];
-  const history = useHistory();
+    const [search, setSearch] = useState({
+        searchTerm: "",
+        searchType: "title",
+        searchAuthor: "",
+        searchTitle: "",
+    });
+    const theme = useContext(ThemeContext)[0];
+    const navbarTheme = NavbarTheme[theme];
+    const buttonTheme = ButtonTheme[theme];
+    const history = useHistory();
 
   const getSearchTerm = (e) => {
     setSearch({ ...search, searchTerm: e.target.value });

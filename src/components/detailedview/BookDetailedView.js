@@ -30,7 +30,7 @@ const BookDetailedView = () => {
                 cover: book.volumeInfo.hasOwnProperty("imageLinks") === true ? book.volumeInfo.imageLinks.thumbnail :
                     Globals.missingImgUrl,
                 title: book.volumeInfo.title ? book.volumeInfo.title : Globals.notAvailableMessage,
-                author: book.volumeInfo.authors ? book.volumeInfo.authors : Globals.notAvailableMessage,
+                authors: book.volumeInfo.authors ? book.volumeInfo.authors.join(", ") : [],
                 publishedDate: book.volumeInfo.publishedDate ? book.volumeInfo.publishedDate : Globals.notAvailableMessage,
                 subtitle: book.volumeInfo.subtitle ? book.volumeInfo.subtitle : null,
                 publisher: book.volumeInfo.publisher ? book.volumeInfo.publisher : Globals.notAvailableMessage,
@@ -60,8 +60,8 @@ const BookDetailedView = () => {
             <div className="book-info-right">
                 <h1>{bookDetails.title}</h1>
                 <h3>{bookDetails.subtitle}</h3>
-                <h2>Author(s): {bookDetails.author}</h2>
-                <h3>Published date: {bookDetails.publishedDate}</h3>
+                <h2>Author(s): {bookDetails.authors}</h2>
+                <h3>Publication date: {bookDetails.publishedDate}</h3>
                 <h3>Publisher: {bookDetails.publisher}</h3>
             </div>
             <div dangerouslySetInnerHTML={{__html :bookDetails.description}} />

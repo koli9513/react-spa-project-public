@@ -20,7 +20,6 @@ const BookList = () => {
       style={{
         backgroundColor: `${currentTheme.backgroundColor}`,
         color: `${currentTheme.color}`,
-        border: `${currentTheme.borderColor}`,
       }}
     >
       {books.map((book, index) => (

@@ -5,6 +5,7 @@ import AppTheme from "../theme/AppTheme";
 import ThemeContext from "../contexts/ThemeContext";
 import { useParams } from "react-router-dom";
 import useFetch from "../helpers/useFetch";
+import Globals from "../helpers/Globals";
 
 const SearchList = () => {
     const theme = useContext(ThemeContext)[0];
@@ -23,8 +24,8 @@ const SearchList = () => {
         else if (searchType === "isbn")
             return '+isbn:'
     })();
-    const advancedSearch = `https://www.googleapis.com/books/v1/volumes?q=+inauthor:${searchAuthor}+intitle:${searchTitle}&maxResults=30`;
-    const simpleSearch = `https://www.googleapis.com/books/v1/volumes?q=${searchIn}${searchTerm}&maxResults=30`;
+    const advancedSearch = `${Globals.apiUrlBase}+inauthor:${searchAuthor}+intitle:${searchTitle}${Globals.maxResults}`;
+    const simpleSearch = `${Globals.apiUrlBase}${searchIn}${searchTerm}${Globals.maxResults}`;
     const url = searchType ? simpleSearch : advancedSearch;
 
   const [books] = useFetch(url);
@@ -34,7 +35,6 @@ const SearchList = () => {
       style={{
         backgroundColor: `${currentTheme.backgroundColor}`,
         color: `${currentTheme.color}`,
-        border: `${currentTheme.borderColor}`,
       }}
     >
       {books.map((book, index) => (
