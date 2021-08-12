@@ -1,14 +1,19 @@
 import { useContext } from "react";
 import BookCard from "../bookcard/BookCard";
-import { BookCardsContainerStyle } from "./BookCardContainerStyle";
+import { BookCardsContainerStyle } from "../styles/BookCardContainerStyle";
 import AppTheme from "../theme/AppTheme";
 import ThemeContext from "../contexts/ThemeContext";
+
 import { KeywordProvider } from "../helpers/KeywordProvider";
 import useFetch from "../helpers/useFetch";
+
+import Globals from "../helpers/Globals";
+
 
 const BookList = () => {
   const theme = useContext(ThemeContext)[0];
   const currentTheme = AppTheme[theme];
+
   const url = `https://www.googleapis.com/books/v1/volumes?q=${KeywordProvider}&maxResults=30`;
   const [books] = useFetch(url);
 

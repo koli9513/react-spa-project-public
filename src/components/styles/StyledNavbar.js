@@ -1,6 +1,12 @@
-import styled, {} from "styled-components";
+import styled, {css} from "styled-components";
 
 export const StyledNavbar = styled.div
     .attrs({className: 'card'})`
-  border: 1px solid black;
+  padding: 30px 50px;
+  display: grid;
+
+  grid-template-columns: repeat(5, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+
 `;
