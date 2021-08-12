@@ -61,7 +61,7 @@ const BookDetailedView = () => {
                 <h1>{bookDetails.title}</h1>
                 <h3>{bookDetails.subtitle}</h3>
                 <h2>Author(s): {bookDetails.authors}</h2>
-                <h3>Published date: {bookDetails.publishedDate}</h3>
+                <h3>Publication date: {bookDetails.publishedDate}</h3>
                 <h3>Publisher: {bookDetails.publisher}</h3>
             </div>
             <div dangerouslySetInnerHTML={{__html :bookDetails.description}} />
