@@ -6,6 +6,7 @@ import NavbarTheme from "../theme/NavbarTheme";
 import ButtonTheme from "../theme/ButtonTheme";
 import { AdvancedSearch } from "./AdvancedSearch";
 import { useHistory } from "react-router-dom";
+import Genres from "../genres/Genres";
 
 const SearchBox = () => {
   const [search, setSearch] = useState({
@@ -43,7 +44,10 @@ const SearchBox = () => {
     backgroundColor: `${buttonTheme.backgroundColor}`,
     color: `${buttonTheme.color}`,
     borderColor: `${buttonTheme.borderColor}`,
-    float: "center",
+    float: "right",
+    right: "3%",
+    position: "absolute",
+    top: "0%",
   };
 
   const advancedButtonStyle = {
@@ -92,37 +96,31 @@ const SearchBox = () => {
         backgroundColor: `${navbarTheme.lowerBackgroundColor}`,
         color: `${navbarTheme.color}`,
         borderColor: `${navbarTheme.borderColor}`,
-      }}
-    >
+      }}>
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          history.push(`/search/${search.searchType}/${search.searchTerm}`);
-        }}
-      >
+          history.push(`/search/${search.searchType}/${search.searchTerm}`);}}>
         <input
           onChange={getSearchTerm}
           placeholder="search books..."
           type="text"
-          style={searchBarStyle}
-        />
+          style={searchBarStyle}/>
         <select
           onChange={getSearchType}
           name="searchType"
           id="searchType"
-          style={searchBarStyle}
-        >
+          style={searchBarStyle}>
           <option value="title">title</option>
           <option value="author">author</option>
           <option value="publisher">publisher</option>
           <option value="subject">subject</option>
           <option value="isbn">isbn</option>
         </select>
-        <button style={searchBarStyle} type="submit">
-          Search
-        </button>
+        <button style={searchBarStyle} type="submit">Search</button>
       </form>
       <AdvancedSearch title={advancedButton} children={advancedForm} />
+      <Genres/>
     </StyledSearchBox>
   );
 };

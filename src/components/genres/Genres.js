@@ -9,32 +9,28 @@ const Genres = () => {
     const [genre, setGenre] = useState('');
 
     const theme = useContext(ThemeContext)[0];
-    const navbarTheme = NavbarTheme[theme];
     const buttonTheme = ButtonTheme[theme];
     const history = useHistory();
 
-    const searchBarStyle = {
-        backgroundColor: `${buttonTheme.backgroundColor}`,
-        color: `${buttonTheme.color}`,
-        borderColor: `${buttonTheme.borderColor}`,
-    };
-
-    const advancedSearchBarStyle = {
-        backgroundColor: `${buttonTheme.backgroundColor}`,
-        color: `${buttonTheme.color}`,
-        borderColor: `${buttonTheme.borderColor}`,
-        float: "center",
-    };
-
-    const advancedButtonStyle = {
+    const genreButtonStyle = {
         backgroundColor: `${buttonTheme.backgroundColor}`,
         color: `${buttonTheme.color}`,
         borderColor: `${buttonTheme.borderColor}`,
         float: "left",
-        right: "3%",
+        left: "14%",
         position: "absolute",
         top: "0%",
     };
+    const genreOptionStyle = {
+        backgroundColor: `${buttonTheme.backgroundColor}`,
+        color: `${buttonTheme.color}`,
+        borderColor: `${buttonTheme.borderColor}`,
+        float: "left",
+        left: "3%",
+        position: "absolute",
+        top: "0%",
+    };
+
 
     const setGenreValue = (e) => {
 
@@ -44,16 +40,11 @@ const Genres = () => {
 
     return (
         <div>
-            <form
-                onSubmit={(e) => {
+            <form onSubmit={(e) => {
                     e.preventDefault();
                    history.push(`/genres/${genre}`);
-                }}
-            >
-                <select
-
-                    style={searchBarStyle}
-                >
+                }}>
+                <select style={genreOptionStyle}>
                     <option value="adventure">adventure</option>
                     <option value="biography">biography</option>
                     <option value="education">education</option>
@@ -61,7 +52,7 @@ const Genres = () => {
                     <option value="science">science</option>
                     <option value="art">art</option>
                 </select>
-                <button style={searchBarStyle} type="submit">
+                <button style={genreButtonStyle} type="submit">
                     Submit
                 </button>
             </form>

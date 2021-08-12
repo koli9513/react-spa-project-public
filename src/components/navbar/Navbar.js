@@ -38,18 +38,15 @@ const Navbar = () => {
                 <StyledNavbarLink to="/" style={navLinkStyle}>Home</StyledNavbarLink>
                 {/*<StyledNavbarLink to="/browse" style={navLinkStyle}>Browse books</StyledNavbarLink>*/}
                 <StyledNavbarLink style={navLinkStyle} to="/favorites">Favorites</StyledNavbarLink>
-                  <Genres />
               </div>
               <CatGif cat="1"/>
               <CatGif cat="2"/>
           </StyledNavbar>
           <StyledSearchBox style={{
               backgroundColor: `${navbarTheme.backgroundColor}`,
-              color: `${navbarTheme.color}`,
+              color: `${navbarTheme.color}`,}}>
 
-          }}>
               <SearchBox />
-
           </StyledSearchBox>
       </div>
   );
