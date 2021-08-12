@@ -11,7 +11,7 @@ const CatGif = ({cat}) => {
       float: "left",
       right: cat === "1" ? "75px" : "15%",
       position: "absolute",
-      top: "2.4%"
+      top: theme === "dark" ? "2.4%" : "4%"
   }
   const catSrc = (() => {
         if (theme === "normal" && cat === "1")
