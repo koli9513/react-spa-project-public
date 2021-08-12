@@ -1,12 +1,13 @@
 import React, { useContext, useState } from "react";
-import { StyledSearchBox } from "../styles/StyledSearchBox";
 import ThemeContext from "../contexts/ThemeContext";
 import NavbarTheme from "../theme/NavbarTheme";
 import ButtonTheme from "../theme/ButtonTheme";
 import { useHistory } from "react-router-dom";
 
 const Genres = () => {
-    const [genre, setGenre] = useState('');
+    const [genres, setGenres] = useState({
+        genre: "adventure"
+    });
 
     const theme = useContext(ThemeContext)[0];
     const buttonTheme = ButtonTheme[theme];
@@ -34,7 +35,7 @@ const Genres = () => {
 
     const setGenreValue = (e) => {
 
-        setGenre({genre: e.target.value})
+        setGenres({...genres, genre: e.target.value});
     }
 
 
@@ -42,7 +43,7 @@ const Genres = () => {
         <div>
             <form onSubmit={(e) => {
                     e.preventDefault();
-                   history.push(`/genres/${genre}`);
+                   history.push(`/genres/${genres.genre}`);
                 }}>
                 <select style={genreOptionStyle} onChange={setGenreValue}>
                     <option value="adventure">adventure</option>

@@ -8,6 +8,7 @@ import FavoriteList from "../lists/FavoriteList";
 import ThemeContext from "../contexts/ThemeContext";
 import BookDetailedView from "../detailedview/BookDetailedView";
 import SearchList from "../lists/SearchList";
+import GenreList from "../lists/GenreList";
 
 
 function App() {
@@ -25,7 +26,7 @@ function App() {
                 <Route path="/browse"><BookList /></Route>
                 <Route path="/search/:searchType/:searchTerm"><SearchList/></Route>
                 <Route path="/advanced/:searchAuthor/:searchTitle"><SearchList/></Route>
-                <Route path="/genres">Genres</Route>
+                <Route path="/genres/:genre"><GenreList/></Route>
                 <Route path="/favorites"><FavoriteList /></Route>
                 <Route path="/book/:bookId"><BookDetailedView /></Route>
               </Switch>
