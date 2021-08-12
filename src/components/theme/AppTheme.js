@@ -2,7 +2,7 @@ const AppTheme = {
   normal: {
     color: "#372964",
     backgroundColor: "#9a79dc",
-    cardBorderColor: "2px solid #31e6a5",
+    cardBorderColor: "2px solid #251d44",
     cardBackgroundColor: "#c0abf1",
   },
   dark: {
