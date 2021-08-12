@@ -13,8 +13,8 @@ export default function useFetch(url) {
           : Globals.missingImgUrl,
         title: book.volumeInfo.title ? book.volumeInfo.title : "Not available",
         authors: book.volumeInfo.authors
-          ? book.volumeInfo.authors
-          : "Not available",
+          ? book.volumeInfo.authors.join(", ")
+          : [],
         publishedDate: book.volumeInfo.publishedDate
           ? book.volumeInfo.publishedDate
           : "Not available",
