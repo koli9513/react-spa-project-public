@@ -12,10 +12,13 @@ import GenreList from "../lists/GenreList";
 import BrowseBookList from "../lists/BrowseBookList";
 
 function App() {
-  const [favoriteBooks, setFavoriteBooks] = useState([]);
+  const [favoriteBooks, setFavoriteBooks] = useState(() => {
+    const localFavoritesData = localStorage.getItem("favorites");
+    return localFavoritesData ? JSON.parse(localFavoritesData) : [];
+  });
   const themeHook = useState(() => {
-    const localData = localStorage.getItem("theme");
-    return localData ? JSON.parse(localData) : "normal";
+    const localThemeData = localStorage.getItem("theme");
+    return localThemeData ? JSON.parse(localThemeData) : "normal";
   });
 
   return (
