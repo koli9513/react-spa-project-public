@@ -5,12 +5,13 @@ import AppTheme from "../theme/AppTheme";
 import ThemeContext from "../contexts/ThemeContext";
 import { useParams } from "react-router-dom";
 import useFetch from "../helpers/useFetch";
+import Globals from "../helpers/Globals";
 
 const GenreList = () => {
     const theme = useContext(ThemeContext)[0];
     const currentTheme = AppTheme[theme];
     const { genre } = useParams();
-    const url = `https://www.googleapis.com/books/v1/volumes?q=subject:${genre}&maxResults=30`;
+    const url = `${Globals.apiUrlBase}${Globals.apiPartForGenres}${genre}${Globals.maxResults}`;
 
     const [books] = useFetch(url);
 
