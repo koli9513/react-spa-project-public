@@ -13,27 +13,44 @@ import BrowseBookList from "../lists/BrowseBookList";
 
 function App() {
   const [favoriteBooks, setFavoriteBooks] = useState([]);
-  const themeHook = useState("normal");
+  const themeHook = useState(() => {
+    const localData = localStorage.getItem("theme");
+    return localData ? JSON.parse(localData) : "normal";
+  });
 
   return (
-      <ThemeContext.Provider value={themeHook}>
-        <FavoriteContext.Provider value={{ favoriteBooks, setFavoriteBooks }}>
-          <Router>
-            <div className="App">
-              <Navbar />
-              <Switch>
-                <Route exact path="/"><BookList /></Route>
-                <Route path="/browse"><BrowseBookList /></Route>
-                <Route path="/search/:searchType/:searchTerm"><SearchList/></Route>
-                <Route path="/advanced/:searchAuthor/:searchTitle"><SearchList/></Route>
-                <Route path="/genres/:genre"><GenreList/></Route>
-                <Route path="/favorites"><FavoriteList /></Route>
-                <Route path="/book/:bookId"><BookDetailedView /></Route>
-              </Switch>
-            </div>
-          </Router>
-        </FavoriteContext.Provider>
-      </ThemeContext.Provider>
+    <ThemeContext.Provider value={themeHook}>
+      <FavoriteContext.Provider value={{ favoriteBooks, setFavoriteBooks }}>
+        <Router>
+          <div className="App">
+            <Navbar />
+            <Switch>
+              <Route exact path="/">
+                <BookList />
+              </Route>
+              <Route path="/browse">
+                <BrowseBookList />
+              </Route>
+              <Route path="/search/:searchType/:searchTerm">
+                <SearchList />
+              </Route>
+              <Route path="/advanced/:searchAuthor/:searchTitle">
+                <SearchList />
+              </Route>
+              <Route path="/genres/:genre">
+                <GenreList />
+              </Route>
+              <Route path="/favorites">
+                <FavoriteList />
+              </Route>
+              <Route path="/book/:bookId">
+                <BookDetailedView />
+              </Route>
+            </Switch>
+          </div>
+        </Router>
+      </FavoriteContext.Provider>
+    </ThemeContext.Provider>
   );
 }
 
