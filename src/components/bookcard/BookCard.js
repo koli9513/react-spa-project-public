@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { StyledBookCard } from "../styles/StyledBookCard";
 import { FavoriteContext } from "../contexts/FavoriteContext";
 import AppTheme from "../theme/AppTheme";
@@ -8,7 +8,7 @@ import FlipHelper from "../helpers/FlipHelper";
 import { BookInfo } from "../elements/BookInfo";
 import { StyledDetailedLink } from "../styles/StyledDetailedLink";
 import ButtonTheme from "../theme/ButtonTheme";
-import {StyledFavoriteButton} from "../styles/StyledFavoriteButton";
+import { StyledFavoriteButton } from "../styles/StyledFavoriteButton";
 
 const BookCard = (props) => {
   const { favoriteBooks, setFavoriteBooks } = useContext(FavoriteContext);
@@ -19,6 +19,12 @@ const BookCard = (props) => {
   const theme = useContext(ThemeContext)[0];
   const currentTheme = AppTheme[theme];
   const buttonTheme = ButtonTheme[theme];
+
+  const styledDetailedLinkStyle = {
+    backgroundColor: `${buttonTheme.backgroundColor}`,
+    color: `${buttonTheme.color}`,
+    borderColor: `${buttonTheme.borderColor}`,
+  };
 
   const addToFavoriteBooks = () => {
     setIsFavorite(true);
@@ -42,11 +48,9 @@ const BookCard = (props) => {
     setFavoriteBooks(updatedFavoriteBooks);
   };
 
-  const styledDetailedLinkStyle = {
-    backgroundColor: `${buttonTheme.backgroundColor}`,
-    color: `${buttonTheme.color}`,
-    borderColor: `${buttonTheme.borderColor}`,
-  }
+  useEffect(() => {
+    localStorage.setItem("favorites", JSON.stringify(favoriteBooks));
+  }, [favoriteBooks]);
 
   return (
     <StyledBookCard
@@ -74,7 +78,8 @@ const BookCard = (props) => {
             <br />
             <StyledDetailedLink
               style={styledDetailedLinkStyle}
-              to={detailedViewUrl}>
+              to={detailedViewUrl}
+            >
               More information
             </StyledDetailedLink>
           </div>
