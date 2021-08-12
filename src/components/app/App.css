@@ -1,11 +1,11 @@
 body, html {
   height: 100%;
-  font-family: OCR A Std, monospace;
+  font-family: 'Chakra Petch', sans-serif;
   background-color: #9a79dc;
 }
 
 button, select, input {
-  font-family: OCR A Std, monospace;
+  font-family: 'Chakra Petch', sans-serif;
 }
 
 .App {
