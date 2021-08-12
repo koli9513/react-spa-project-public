@@ -5,34 +5,28 @@ import AppTheme from "../theme/AppTheme";
 import ThemeContext from "../contexts/ThemeContext";
 import useFetch from "../helpers/useFetch";
 import { useHistory } from "react-router-dom";
+import Globals from "../helpers/Globals";
 
-const words = [
-  "+inauthor:sigmund+freud",
-  "ShakesPeare",
-  "+inauthor:endre+ady",
-  "+inauthor:jane+austen",
-  "+intitle:qing",
-  "+inauthor:patrick+rothfuss",
-  "+inauthor:sylvia+plath",
-  "+inauthor:j+d+salinger",
-  "+inauthor:tennessee+williams",
-  "+inauthor:j+r+r+tolkien",
-  "+inauthor:terry+pratchett",
-];
+
 
 const BrowseBookList = () => {
   const theme = useContext(ThemeContext)[0];
   const currentTheme = AppTheme[theme];
   const history = useHistory();
   const [keyword, setKeyword] = useState(
-    words[Math.floor(Math.random() * words.length)]
+    Globals.words[getRandomIndex()]
   );
-  const url = `https://www.googleapis.com/books/v1/volumes?q=${keyword}&maxResults=30`;
+  const url = `${Globals.apiUrlBase}${keyword}${Globals.maxResults}`;
+
   const [books] = useFetch(url);
+
+  function getRandomIndex() {
+    return Math.floor(Math.random() * Globals.words.length);
+  }
 
   useEffect(() => {
     const unlisten = history.listen(() => {
-      setKeyword(words[Math.floor(Math.random() * words.length)]);
+      setKeyword(Globals.words[getRandomIndex()]);
     });
     return function cleanup() {
       unlisten();
