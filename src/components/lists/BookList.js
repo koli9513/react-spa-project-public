@@ -4,7 +4,6 @@ import BookCard from "../bookcard/BookCard";
 import { BookCardsContainerStyle } from "../styles/BookCardContainerStyle";
 import AppTheme from "../theme/AppTheme";
 import ThemeContext from "../contexts/ThemeContext";
-import {KeywordProvider} from "../helpers/KeywordProvider";
 import Globals from "../helpers/Globals";
 
 
