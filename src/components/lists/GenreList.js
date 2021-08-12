@@ -11,7 +11,6 @@ const GenreList = () => {
     const currentTheme = AppTheme[theme];
     const { genre } = useParams();
     const url = `https://www.googleapis.com/books/v1/volumes?q=subject:${genre}&maxResults=30`;
-    console.log(url)
 
     const [books] = useFetch(url);
 

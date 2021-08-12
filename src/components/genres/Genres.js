@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import ThemeContext from "../contexts/ThemeContext";
-import NavbarTheme from "../theme/NavbarTheme";
 import ButtonTheme from "../theme/ButtonTheme";
 import { useHistory } from "react-router-dom";
 
