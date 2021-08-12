@@ -4,14 +4,11 @@ import { BookCardsContainerStyle } from "../styles/BookCardContainerStyle";
 import AppTheme from "../theme/AppTheme";
 import ThemeContext from "../contexts/ThemeContext";
 import useFetch from "../helpers/useFetch";
-
 import Globals from "../helpers/Globals";
-
 
 const BookList = () => {
   const theme = useContext(ThemeContext)[0];
   const currentTheme = AppTheme[theme];
-
   const url = Globals.homePageApiUrl;
   const [books] = useFetch(url);
 

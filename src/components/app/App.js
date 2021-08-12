@@ -9,7 +9,6 @@ import ThemeContext from "../contexts/ThemeContext";
 import BookDetailedView from "../detailedview/BookDetailedView";
 import SearchList from "../lists/SearchList";
 import GenreList from "../lists/GenreList";
-
 import BrowseBookList from "../lists/BrowseBookList";
 
 function App() {
