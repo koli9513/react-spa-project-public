@@ -1,4 +1,4 @@
-import {StyledFavouriteButton} from "../styles/StyledFavouriteButton";
+import {StyledFavouriteButton} from "../styles/StyledFavoriteButton";
 import {StyledDetailedLink} from "../styles/StyledDetailedLink";
 import React from "react";
 
