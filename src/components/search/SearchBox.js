@@ -111,7 +111,6 @@ const SearchBox = () => {
             });
         }}
       >
-          history.push(`/search/${search.searchType}/${search.searchTerm}`);}}>
         <input
           onChange={getSearchTerm}
           placeholder="search books..."
@@ -119,7 +118,6 @@ const SearchBox = () => {
           style={searchBarStyle}
           value={search.searchTerm}
         />
-          style={searchBarStyle}/>
         <select
           onChange={getSearchType}
           name="searchType"
