@@ -6,7 +6,6 @@ import ThemeContext from "../contexts/ThemeContext";
 import {StyledCoverImage} from "../styles/StyledCoverImage";
 import FlipHelper from "../helpers/FlipHelper";
 import {BookInfo} from "../elements/BookInfo";
-import {ActionItems} from "../elements/ActionItems";
 import {StyledFavouriteButton} from "../styles/StyledFavouriteButton";
 import {StyledDetailedLink} from "../styles/StyledDetailedLink";
 import ButtonTheme from "../theme/ButtonTheme";
