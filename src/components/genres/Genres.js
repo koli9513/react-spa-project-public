@@ -44,7 +44,7 @@ const Genres = () => {
                     e.preventDefault();
                    history.push(`/genres/${genre}`);
                 }}>
-                <select style={genreOptionStyle}>
+                <select style={genreOptionStyle} onChange={setGenreValue}>
                     <option value="adventure">adventure</option>
                     <option value="biography">biography</option>
                     <option value="education">education</option>
