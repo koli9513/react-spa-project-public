@@ -1,5 +1,10 @@
 body, html {
   height: 100%;
+  font-family: OCR A Std, monospace;
+}
+
+button, select, input {
+  font-family: OCR A Std, monospace;
 }
 
 .App {
