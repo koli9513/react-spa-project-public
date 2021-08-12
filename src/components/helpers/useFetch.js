@@ -44,7 +44,8 @@ export default function useFetch(url) {
             } else {
               console.log('Error', error.message);
             }
-            console.log(error.config);
+              alert('No books found');
+              console.log(error.config);
           });
     };
     getBooks();
