@@ -13,43 +13,47 @@ const SearchList = () => {
     const { searchType, searchTerm } = useParams();
     const { searchAuthor, searchTitle } = useParams();
     const searchIn = (() => {
-        if (searchType === "author")
-            return '+inauthor:'
-        else if (searchType === "title")
-            return '+intitle:'
-        else if (searchType === "publisher")
-            return '+inpublisher:'
-        else if (searchType === "subject")
-            return '+subject:'
-        else if (searchType === "isbn")
-            return '+isbn:'
+        switch (searchType){
+            case "author":
+                return '+inauthor:';
+            case "title":
+                return '+intitle:';
+            case "publisher":
+                return '+inpublisher:';
+            case "subject":
+                return '+subject:';
+            case "isbn":
+                return '+isbn:';
+            default:
+                return '+intitle:';
+        }
     })();
     const advancedSearch = `${Globals.apiUrlBase}+inauthor:${searchAuthor}+intitle:${searchTitle}${Globals.maxResults}`;
     const simpleSearch = `${Globals.apiUrlBase}${searchIn}${searchTerm}${Globals.maxResults}`;
     const url = searchType ? simpleSearch : advancedSearch;
 
-  const [books] = useFetch(url);
+    const [books] = useFetch(url);
 
-  return (
-    <BookCardsContainerStyle
-      style={{
-        backgroundColor: `${currentTheme.backgroundColor}`,
-        color: `${currentTheme.color}`,
-      }}
-    >
-      {books.map((book, index) => (
-        <BookCard
-          key={index}
-          cover={book.cover}
-          authors={book.authors}
-          title={book.title}
-          published={book.publishedDate}
-          id={book.id}
-          fromFavoriteList={false}
-        />
-      ))}
-    </BookCardsContainerStyle>
-  );
-};
+    return (
+        <BookCardsContainerStyle
+          style={{
+            backgroundColor: `${currentTheme.backgroundColor}`,
+            color: `${currentTheme.color}`,
+          }}
+        >
+          {books.map((book, index) => (
+            <BookCard
+              key={index}
+              cover={book.cover}
+              authors={book.authors}
+              title={book.title}
+              published={book.publishedDate}
+              id={book.id}
+              fromFavoriteList={false}
+            />
+          ))}
+        </BookCardsContainerStyle>
+      );
+    };
 
 export default SearchList;

@@ -7,8 +7,6 @@ import useFetch from "../helpers/useFetch";
 import { useHistory } from "react-router-dom";
 import Globals from "../helpers/Globals";
 
-
-
 const BrowseBookList = () => {
   const theme = useContext(ThemeContext)[0];
   const currentTheme = AppTheme[theme];

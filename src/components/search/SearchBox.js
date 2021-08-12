@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import axios from "axios";
 import { StyledSearchBox } from "../styles/StyledSearchBox";
 import ThemeContext from "../contexts/ThemeContext";
 import NavbarTheme from "../theme/NavbarTheme";

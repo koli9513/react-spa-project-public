@@ -27,7 +27,7 @@ const BookDetailedView = () => {
 
     function correctMissingProperties(book) {
         return {
-                cover: book.volumeInfo.hasOwnProperty("imageLinks") === true ? book.volumeInfo.imageLinks.thumbnail :
+                cover: book.volumeInfo.hasOwnProperty("imageLinks") ? book.volumeInfo.imageLinks.thumbnail :
                     Globals.missingImgUrl,
                 title: book.volumeInfo.title ? book.volumeInfo.title : Globals.notAvailableMessage,
                 authors: book.volumeInfo.authors ? book.volumeInfo.authors.join(", ") : [],
@@ -48,12 +48,14 @@ const BookDetailedView = () => {
             };
     }
 
+    const styledBookDetailedViewStyle = {
+        backgroundColor: `${currentTheme.backgroundColor}`,
+        color: `${currentTheme.color}`,
+        border: `${currentTheme.borderColor}`,
+    }
+
     return (
-        <StyledBookDetailedView style={{
-            backgroundColor: `${currentTheme.backgroundColor}`,
-            color: `${currentTheme.color}`,
-            border: `${currentTheme.borderColor}`,
-        }}>
+        <StyledBookDetailedView style={styledBookDetailedViewStyle}>
             <div className="image-left">
                 <StyledCoverImage src={bookDetails.cover} alt="cover"/>
             </div>

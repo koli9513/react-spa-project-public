@@ -31,12 +31,9 @@ const Genres = () => {
         top: "0%",
     };
 
-
     const setGenreValue = (e) => {
-
         setGenres({...genres, genre: e.target.value});
     }
-
 
     return (
         <div>
