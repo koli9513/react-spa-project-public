@@ -42,6 +42,12 @@ const BookCard = (props) => {
     setFavoriteBooks(updatedFavoriteBooks);
   };
 
+  const styledDetailedLinkStyle = {
+    backgroundColor: `${buttonTheme.backgroundColor}`,
+    color: `${buttonTheme.color}`,
+    borderColor: `${buttonTheme.borderColor}`,
+  }
+
   return (
     <StyledBookCard
       style={{
@@ -67,13 +73,8 @@ const BookCard = (props) => {
           <div style={{ width: "190px", height: "120px" }}>
             <br />
             <StyledDetailedLink
-              style={{
-                backgroundColor: `${buttonTheme.backgroundColor}`,
-                color: `${buttonTheme.color}`,
-                borderColor: `${buttonTheme.borderColor}`,
-              }}
-              to={detailedViewUrl}
-            >
+              style={styledDetailedLinkStyle}
+              to={detailedViewUrl}>
               More information
             </StyledDetailedLink>
           </div>
