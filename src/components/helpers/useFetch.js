@@ -27,7 +27,6 @@ export default function useFetch(url) {
   useEffect(() => {
     const getBooks = () => {
       axios.get(url).then((response) => {
-        console.log(url);
         const booksFromServer = response.data.items;
         const cleaned = correctMissingProperties(booksFromServer);
         setBooks(cleaned);
