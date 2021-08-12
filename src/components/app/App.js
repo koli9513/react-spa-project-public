@@ -22,8 +22,9 @@ function App() {
               <Navbar />
               <Switch>
                 <Route exact path="/"><BookList /></Route>
-                <Route exact path="/browse"><BookList /></Route>
+                <Route path="/browse"><BookList /></Route>
                 <Route path="/search/:searchType/:searchTerm"><SearchList/></Route>
+                <Route path="/advanced/:searchAuthor/:searchTitle"><SearchList/></Route>
                 <Route path="/genres">Genres</Route>
                 <Route path="/favorites"><FavoriteList /></Route>
                 <Route path="/book/:bookId"><BookDetailedView /></Route>
