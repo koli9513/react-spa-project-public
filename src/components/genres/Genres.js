@@ -26,7 +26,7 @@ const Genres = () => {
         color: `${buttonTheme.color}`,
         borderColor: `${buttonTheme.borderColor}`,
         float: "left",
-        left: "3%",
+        left: "2%",
         position: "absolute",
         top: "0%",
     };

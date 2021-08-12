@@ -44,10 +44,7 @@ const SearchBox = () => {
     backgroundColor: `${buttonTheme.backgroundColor}`,
     color: `${buttonTheme.color}`,
     borderColor: `${buttonTheme.borderColor}`,
-    float: "right",
-    right: "3%",
-    position: "absolute",
-    top: "0%",
+    float: "center",
   };
 
   const advancedButtonStyle = {
