@@ -6,7 +6,20 @@ const Globals = {
     homePageApiUrl: `https://www.googleapis.com/books/v1/volumes?q=${KeywordProvider}&maxResults=20`,
     maxResults: "&maxResults=20",
     apiUrlBase: "https://www.googleapis.com/books/v1/volumes?q=",
-    apiPartForGenres: "subject:"
+    apiPartForGenres: "subject:",
+    words: [
+        "+inauthor:sigmund+freud",
+        "ShakesPeare",
+        "+inauthor:endre+ady",
+        "+inauthor:jane+austen",
+        "+intitle:qing",
+        "+inauthor:patrick+rothfuss",
+        "+inauthor:sylvia+plath",
+        "+inauthor:j+d+salinger",
+        "+inauthor:tennessee+williams",
+        "+inauthor:j+r+r+tolkien",
+        "+inauthor:terry+pratchett",
+    ],
 };
 
 export default Globals;
