@@ -63,18 +63,24 @@ const SearchBox = () => {
       onSubmit={(e) => {
         e.preventDefault();
         history.push(`advanced/${search.searchAuthor}/${search.searchTitle}`);
+        setSearch({
+              searchAuthor: '',
+              searchTitle: ''
+          });
       }}
     >
       <input
         onChange={getSearchAuthor}
         placeholder="search author..."
         type="text"
+        value={search.searchAuthor}
         style={advancedSearchBarStyle}
       />
       <input
         onChange={getSearchTitle}
         placeholder="search title..."
         type="text"
+        value={search.searchTitle}
         style={advancedSearchBarStyle}
       />
       <button style={advancedSearchBarStyle} type="submit">
@@ -100,6 +106,9 @@ const SearchBox = () => {
         onSubmit={(e) => {
           e.preventDefault();
           history.push(`/search/${search.searchType}/${search.searchTerm}`);
+          setSearch({
+                searchTerm: ''
+            });
         }}
       >
         <input
@@ -107,6 +116,7 @@ const SearchBox = () => {
           placeholder="search books..."
           type="text"
           style={searchBarStyle}
+          value={search.searchTerm}
         />
         <select
           onChange={getSearchType}
