@@ -9,7 +9,9 @@ import {AdvancedSearch} from "./AdvancedSearch";
 const SearchBox = () => {
     const [search, setSearch] = useState({
         searchTerm: "",
-        searchType: "title"
+        searchType: "title",
+        searchAuthor: "",
+        searchTitle: "",
     });
     const theme = useContext(ThemeContext)[0];
     const navbarTheme = NavbarTheme[theme];
