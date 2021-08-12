@@ -9,6 +9,7 @@ import {StyledNavbarLink} from "../styles/StyledNavbarLink";
 import {StyledSearchBox} from "../styles/StyledSearchBox";
 import ButtonTheme from "../theme/ButtonTheme";
 import CatGif from "../theme/CatGif";
+import Genres from "../genres/Genres";
 
 const Navbar = () => {
   const theme = useContext(ThemeContext)[0];
@@ -37,7 +38,7 @@ const Navbar = () => {
                 <StyledNavbarLink to="/" style={navLinkStyle}>Home</StyledNavbarLink>
                 {/*<StyledNavbarLink to="/browse" style={navLinkStyle}>Browse books</StyledNavbarLink>*/}
                 <StyledNavbarLink style={navLinkStyle} to="/favorites">Favorites</StyledNavbarLink>
-                <StyledNavbarLink style={navLinkStyle} to="/genres">Genres</StyledNavbarLink>
+                  <Genres />
               </div>
               <CatGif cat="1"/>
               <CatGif cat="2"/>
