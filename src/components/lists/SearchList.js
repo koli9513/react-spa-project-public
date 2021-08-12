@@ -24,6 +24,8 @@ const SearchList = () => {
                 return '+subject:';
             case "isbn":
                 return '+isbn:';
+            default:
+                return '+intitle:';
         }
     })();
     const advancedSearch = `${Globals.apiUrlBase}+inauthor:${searchAuthor}+intitle:${searchTitle}${Globals.maxResults}`;
