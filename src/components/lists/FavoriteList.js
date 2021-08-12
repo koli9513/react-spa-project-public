@@ -14,7 +14,6 @@ const FavoriteList = () => {
     <BookCardsContainerStyle style={{
       backgroundColor: `${currentTheme.backgroundColor}`,
       color: `${currentTheme.color}`,
-      border: `${currentTheme.borderColor}`,
     }}>
       {favoriteBooks.map((book, index) => (
         <BookCard
