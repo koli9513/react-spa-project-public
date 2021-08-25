@@ -11,9 +11,7 @@ const BrowseBookList = () => {
   const theme = useContext(ThemeContext)[0];
   const currentTheme = AppTheme[theme];
   const history = useHistory();
-  const [keyword, setKeyword] = useState(
-    Globals.words[getRandomIndex()]
-  );
+  const [keyword, setKeyword] = useState(Globals.words[getRandomIndex()]);
   const url = `${Globals.apiUrlBase}${keyword}${Globals.maxResults}`;
 
   const [books] = useFetch(url);
@@ -39,9 +37,9 @@ const BrowseBookList = () => {
         border: `${currentTheme.borderColor}`,
       }}
     >
-      {books.map((book, index) => (
+      {books.map((book) => (
         <BookCard
-          key={index}
+          key={book.id}
           cover={book.cover}
           authors={book.authors}
           title={book.title}

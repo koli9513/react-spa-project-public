@@ -19,9 +19,9 @@ const BookList = () => {
         color: `${currentTheme.color}`,
       }}
     >
-      {books.map((book, index) => (
+      {books.map((book) => (
         <BookCard
-          key={index}
+          key={book.id}
           cover={book.cover}
           authors={book.authors}
           title={book.title}

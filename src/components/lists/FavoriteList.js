@@ -11,13 +11,15 @@ const FavoriteList = () => {
   const currentTheme = AppTheme[theme];
 
   return (
-    <BookCardsContainerStyle style={{
-      backgroundColor: `${currentTheme.backgroundColor}`,
-      color: `${currentTheme.color}`,
-    }}>
-      {favoriteBooks.map((book, index) => (
+    <BookCardsContainerStyle
+      style={{
+        backgroundColor: `${currentTheme.backgroundColor}`,
+        color: `${currentTheme.color}`,
+      }}
+    >
+      {favoriteBooks.map((book) => (
         <BookCard
-          key={index}
+          key={book.id}
           cover={book.cover}
           authors={book.authors}
           title={book.title}
